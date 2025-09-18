@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 2348d3fb9e70caf429d9f9c580fcde99
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3292825546083235904
+    second: Phit_0
+  - first:
+      213: -8411681208621359395
+    second: Phit_1
+  - first:
+      213: -1994825279823799689
+    second: Phit_2
+  - first:
+      213: -3161553860710375793
+    second: Phit_3
+  - first:
+      213: 6661316867109175844
+    second: Phit_4
+  - first:
+      213: -7210452883716341892
+    second: Phit_5
+  - first:
+      213: 1073021864242424478
+    second: Phit_6
+  - first:
+      213: -5410776200495146685
+    second: Phit_7
+  - first:
+      213: -9126499159807452814
+    second: Phit_8
+  - first:
+      213: -5775951417342700580
+    second: Phit_9
+  - first:
+      213: -4851082298310481274
+    second: Phit_10
+  - first:
+      213: 3313429814509209407
+    second: Phit_11
+  - first:
+      213: 3751922837133837552
+    second: Phit_12
+  - first:
+      213: -5776064248488209773
+    second: Phit_13
+  - first:
+      213: -1423757178673758532
+    second: Phit_14
+  - first:
+      213: 8228830128313280164
+    second: Phit_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Phit_0
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 1032
+        width: 1805
+        height: 1865
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0487f95536772bd20800000000000000
+      internalID: 3292825546083235904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_1
+      rect:
+        serializedVersion: 2
+        x: 2082
+        y: 2672
+        width: 79
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dde9b4cf184b34b80800000000000000
+      internalID: -8411681208621359395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_2
+      rect:
+        serializedVersion: 2
+        x: 3132
+        y: 2472
+        width: 354
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77a122f1af4f054e0800000000000000
+      internalID: -1994825279823799689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_3
+      rect:
+        serializedVersion: 2
+        x: 3093
+        y: 1060
+        width: 2322
+        height: 2271
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8ed71aa387ef14d0800000000000000
+      internalID: -3161553860710375793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_4
+      rect:
+        serializedVersion: 2
+        x: 4830
+        y: 2645
+        width: 234
+        height: 569
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4224c50c560c17c50800000000000000
+      internalID: 6661316867109175844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_5
+      rect:
+        serializedVersion: 2
+        x: 4972
+        y: 2466
+        width: 373
+        height: 359
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7f756c0e435feb90800000000000000
+      internalID: -7210452883716341892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_6
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 2069
+        width: 165
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9aa56e43b324ee00800000000000000
+      internalID: 1073021864242424478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_7
+      rect:
+        serializedVersion: 2
+        x: 1788
+        y: 2053
+        width: 315
+        height: 536
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 349595296bf09e4b0800000000000000
+      internalID: -5410776200495146685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_8
+      rect:
+        serializedVersion: 2
+        x: 2148
+        y: 2032
+        width: 127
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27996c05e59285180800000000000000
+      internalID: -9126499159807452814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_9
+      rect:
+        serializedVersion: 2
+        x: 3145
+        y: 2058
+        width: 425
+        height: 140
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd3df59c9c2b7dfa0800000000000000
+      internalID: -5775951417342700580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_10
+      rect:
+        serializedVersion: 2
+        x: 4932
+        y: 2104
+        width: 314
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68aa4011a5e7dacb0800000000000000
+      internalID: -4851082298310481274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_11
+      rect:
+        serializedVersion: 2
+        x: 1864
+        y: 1829
+        width: 260
+        height: 233
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f37820a6cdaabfd20800000000000000
+      internalID: 3313429814509209407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_12
+      rect:
+        serializedVersion: 2
+        x: 3106
+        y: 1397
+        width: 558
+        height: 545
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f4c90c11f1811430800000000000000
+      internalID: 3751922837133837552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_13
+      rect:
+        serializedVersion: 2
+        x: 4987
+        y: 1654
+        width: 351
+        height: 396
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 392d60d3b2c47dfa0800000000000000
+      internalID: -5776064248488209773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_14
+      rect:
+        serializedVersion: 2
+        x: 3687
+        y: 1029
+        width: 257
+        height: 645
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbefcbea36ccd3ce0800000000000000
+      internalID: -1423757178673758532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phit_15
+      rect:
+        serializedVersion: 2
+        x: 4281
+        y: 933
+        width: 49
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a6252b476da23270800000000000000
+      internalID: 8228830128313280164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 073a792c43cc12f4fa434606ce49972c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Phit_0: 3292825546083235904
+      Phit_1: -8411681208621359395
+      Phit_10: -4851082298310481274
+      Phit_11: 3313429814509209407
+      Phit_12: 3751922837133837552
+      Phit_13: -5776064248488209773
+      Phit_14: -1423757178673758532
+      Phit_15: 8228830128313280164
+      Phit_2: -1994825279823799689
+      Phit_3: -3161553860710375793
+      Phit_4: 6661316867109175844
+      Phit_5: -7210452883716341892
+      Phit_6: 1073021864242424478
+      Phit_7: -5410776200495146685
+      Phit_8: -9126499159807452814
+      Phit_9: -5775951417342700580
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

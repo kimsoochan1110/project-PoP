@@ -1,0 +1,230 @@
+using System.Collections;
+using JetBrains.Annotations;
+using UnityEngine;
+
+public class Player : MonoBehaviour
+{
+    public Delay delay; //딜레이 스크립트 참조
+    //일반공격
+    public HitboxData SAHitboxData; //일반공격
+    public HurtboxData SAHurtboxData; //일반공격 허트박스
+    public int SACount = 0; //일반공격 카운트
+    //점프공격
+    public HitboxData JAHitboxData;
+    public HurtboxData JAHurtboxData;
+    public int JACount = 0; //점프공격 카운트
+    //점프아래공격
+    public HitboxData JDAHitboxData; 
+    public HurtboxData JDAHurtboxData;
+    public int JDACount = 0;  //점프아래공격 카운트
+
+    public HitboxController hitboxController;
+    public HurtboxController hurtboxController;
+    private Rigidbody2D rigid;
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    
+    public float maxSpeed; // 최대속도
+    public float forceAmount; //가속정도
+    
+    public bool isAttacking = false; // 공격 중인지 여부
+    public bool lastFlipX; // 이전 방향 저장
+
+    public float jumpPower; //점프 파워
+    public int jumpCount = 0; //점프 카운트
+    public float jumpTime = 0f;  // 점프 버튼 누른 시간
+    public int maxJumpCount = 2; //최대 점프 카운트
+    public float jumpInputBufferTime = 0.5f;
+    public float jumpInputBuffer = 0f;//점프버퍼
+    
+    public bool isJumping = false; // 점프 중인지 여부
+
+
+    void Start()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        hitboxController = GetComponentInChildren<HitboxController>();
+        hurtboxController = GetComponentInChildren<HurtboxController>();
+        delay = GetComponentInChildren<Delay>();
+        animator = GetComponent<Animator>();
+        lastFlipX = spriteRenderer.flipX; // 초기 방향 저장
+    }
+
+    private void Update()
+    {
+        // 점프 입력 버퍼 처리
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpInputBuffer = jumpInputBufferTime;
+        }
+        else
+        {
+            jumpInputBuffer -= Time.deltaTime;
+        }
+
+        if (!delay.canAct) return;
+
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        // 점프 실행
+        if (jumpInputBuffer > 0 && jumpCount < maxJumpCount)
+        {
+            jumpTime = 0f;
+            rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, jumpPower);
+            isJumping = true;
+            jumpCount++;
+            jumpInputBuffer = 0f; // 버퍼 소비
+        }
+
+        // 버튼 누르는 시간 기록
+        if (Input.GetButton("Jump") && isJumping)
+        {
+            jumpTime += Time.deltaTime;
+        }
+
+        // 소점프 처리
+        if (Input.GetButtonUp("Jump") && isJumping)
+        {
+            if (jumpTime <= 8f / 60f) // 소점프 기준 프레임
+            {
+                rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, rigid.linearVelocity.y * 0.4f);
+            }
+        }
+        if (jumpCount == 1)
+        {
+            animator.SetBool("isJumping", true);
+        }
+        if (jumpCount == 2)
+        {
+            animator.SetBool("isJumping", false); // 상태 초기화
+            animator.SetBool("isJumping", true);  // 다시 트리거
+
+        }
+        //점프버퍼
+
+        // 수평 이동
+        float h = Input.GetAxisRaw("Horizontal");
+        if (Input.GetButtonUp("Horizontal"))
+        {
+            rigid.linearVelocity = new Vector2(rigid.linearVelocity.x * 0.5f, rigid.linearVelocity.y);
+        }
+        // 이동 애니메이션 설정
+        animator.SetBool("isRunning", h != 0); 
+
+        // 방향 전환 애니메이션 설정
+        // **방향이 바뀌었을 때만 "Turn" 애니메이션 실행**
+        if ((h > 0 && spriteRenderer.flipX) || (h < 0 && !spriteRenderer.flipX))
+        {
+            animator.SetTrigger("turnTrigger"); // "Turn" 실행
+            spriteRenderer.flipX = !spriteRenderer.flipX; // 방향 변경
+        }
+
+
+        //공격  
+        //일반
+        if (Input.GetButtonDown("Fire1") && !isJumping)
+        {
+            hitboxController.currentHitboxData = SAHitboxData;
+            hurtboxController.currentHurtboxData = SAHurtboxData;
+            animator.SetTrigger("attackTrigger"); // 공격 애니메이션 실행
+            isAttacking = true;
+            rigid.linearVelocity = rigid.linearVelocity * 0.3f;
+            delay.SetDelay(0.4f);
+        }
+        if (Input.GetButtonDown("Fire1") && isJumping)
+        {
+            float vertical = Input.GetAxisRaw("Vertical"); // ↓ 입력 여부 확인 (-1이면 아래)
+
+            // 점프아래공격 (↓ 입력 & 횟수 제한)
+            if (vertical < 0 && JDACount < 1)
+            {
+                hitboxController.currentHitboxData = JDAHitboxData;
+                hurtboxController.currentHurtboxData = JDAHurtboxData;
+                JDACount++;
+                animator.SetTrigger("JDA"); // 점프아래공격 애니메이션 실행
+                isAttacking = true;
+                rigid.linearVelocity = new Vector2(
+                    rigid.linearVelocity.x + 100 * (spriteRenderer.flipX ? -1 : 1),
+                    100f
+                );
+                delay.SetDelay(0.4f);
+            }
+            // 점프공격 (↓ 입력 없을 때 & 횟수 제한)
+            else if (vertical == 0 && JACount < 2)
+            {
+                hitboxController.currentHitboxData = JAHitboxData;
+                hurtboxController.currentHurtboxData = JAHurtboxData;
+                JACount++;
+                animator.SetTrigger("jumpattackTrigger"); // 점프공격 애니메이션 실행
+                isAttacking = true;
+                rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 100f);
+                delay.SetDelay(0.2f);
+            }
+        }
+        
+        
+    }
+
+    void FixedUpdate()
+    {
+        if (!delay.canAct) return;
+
+        
+        float h = Input.GetAxisRaw("Horizontal");
+
+        // AddForce를 사용해 한 번에 최대 속도로 힘을 가함
+        rigid.AddForce(Vector2.right * h * forceAmount, ForceMode2D.Impulse);
+
+        // 속도 제한 적용
+        rigid.linearVelocity = new Vector2(Mathf.Clamp(rigid.linearVelocity.x, -maxSpeed, maxSpeed), rigid.linearVelocity.y);
+
+        //착지모션
+        if (rigid.linearVelocity.y < 0)//땅에있을때
+        {
+            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 7, LayerMask.GetMask("Ground") & ~LayerMask.GetMask("Sandbag"));
+            if (rayHit.collider != null)//바닥감지
+            {   
+                if (rayHit.distance < 7)    
+                Debug.Log(rayHit.collider.name);
+                animator.SetBool("isJumping", false);
+                isJumping = false;
+                jumpCount = 0;
+                JACount = 0; 
+                JDACount = 0;
+            }
+            
+        }
+    }
+    
+        
+    
+
+    // 히트박스 켜기 (애니메이션 이벤트로 호출)
+    public void EnableHitboxAtFrame(int frameIndex)
+    {
+        hitboxController.EnableHitboxAtFrame(frameIndex);
+    }
+    // 히트박스 끄기 (애니메이션 끝나는 시점에 이벤트로 호출)
+    public void DisableHitbox() //히트박스 끄기
+    {
+        hitboxController.DisableHitbox();
+    }
+
+
+
+    public void EnableHurtboxAtFrame(int frameIndex) //허트박스 프레임 감지
+    
+    {
+        hurtboxController.EnableHurtboxAtFrame(frameIndex);
+    }
+    public void ResetHutbox()
+    {
+        hurtboxController.ResetHurtbox();
+    }
+    public void DisableHurtbox() //허트박스 끄기
+    {
+        hurtboxController.DisableHurtbox();
+    }
+    
+}
