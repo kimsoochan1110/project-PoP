@@ -794,6 +794,7 @@ GameObject:
   - component: {fileID: 1371621748}
   - component: {fileID: 1371621754}
   - component: {fileID: 1371621756}
+  - component: {fileID: 1371621757}
   m_Layer: 6
   m_Name: Palyer1
   m_TagString: Player
@@ -866,7 +867,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 29.38, y: 26.273657}
+    oldSize: {x: 27.28, y: 8.831854}
     newSize: {x: 11.099999, y: 12.81875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -918,7 +919,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6083197744876139778, guid: aae617500b7490c429b5cd58cbe506e6, type: 3}
+  m_Sprite: {fileID: -3721400742328757493, guid: 4dec98daf5e56b6448ef6ce5675a95ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -987,12 +988,15 @@ MonoBehaviour:
   SAHitboxData: {fileID: 11400000, guid: b88839b48f0280644acf24d888e8b57f, type: 2}
   SAHurtboxData: {fileID: 11400000, guid: d1be10e01233a5c4690956322c43e8b4, type: 2}
   SACount: 0
+  DSAHitboxData: {fileID: 11400000, guid: 5f798f1152c729845936085384449b4d, type: 2}
+  DSAHurtboxData: {fileID: 0}
   JAHitboxData: {fileID: 11400000, guid: 214114bfbbc8cbd44909fa366845992c, type: 2}
   JAHurtboxData: {fileID: 11400000, guid: 0141a9b8f3351d44bb7c8e36bfcfdccc, type: 2}
   JACount: 0
   JDAHitboxData: {fileID: 11400000, guid: 7e898c32c1ad6c647a25ce2240876d9d, type: 2}
   JDAHurtboxData: {fileID: 11400000, guid: 78b6a127046fb8641be31555dacff88e, type: 2}
   JDACount: 0
+  dashData: {fileID: 11400000, guid: ce59ef30d174ff947b207febbb22652e, type: 2}
   hitboxController: {fileID: 1931815752}
   hurtboxController: {fileID: 1503163874}
   maxSpeed: 100
@@ -1006,6 +1010,19 @@ MonoBehaviour:
   jumpInputBufferTime: 0.3
   jumpInputBuffer: 0
   isJumping: 0
+--- !u!114 &1371621757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371621747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af93cd37ed776b0469589d027f7e50ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDashData: {fileID: 0}
 --- !u!1 &1503163872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1619,7 +1636,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 4}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1629,7 +1646,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 27, y: 23}
+  m_Size: {x: 30, y: 25}
   m_EdgeRadius: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -1,14 +1,20 @@
 using System.Collections;
 using JetBrains.Annotations;
+using NUnit.Framework;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
+{   
+    
     public Delay delay; //딜레이 스크립트 참조
     //일반공격
     public HitboxData SAHitboxData; //일반공격
     public HurtboxData SAHurtboxData; //일반공격 허트박스
     public int SACount = 0; //일반공격 카운트
+
+    public HitboxData DSAHitboxData; //대쉬공격
+    public HurtboxData DSAHurtboxData; //대쉬공격 허트박스
+
     //점프공격
     public HitboxData JAHitboxData;
     public HurtboxData JAHurtboxData;
@@ -17,9 +23,12 @@ public class Player : MonoBehaviour
     public HitboxData JDAHitboxData; 
     public HurtboxData JDAHurtboxData;
     public int JDACount = 0;  //점프아래공격 카운트
+    //대쉬
+    public DashData dashData; //대쉬 데이터
 
     public HitboxController hitboxController;
     public HurtboxController hurtboxController;
+    private DashController dashController; //대쉬 스크립트 참조
     private Rigidbody2D rigid;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -36,16 +45,19 @@ public class Player : MonoBehaviour
     public int maxJumpCount = 2; //최대 점프 카운트
     public float jumpInputBufferTime = 0.5f;
     public float jumpInputBuffer = 0f;//점프버퍼
-    
     public bool isJumping = false; // 점프 중인지 여부
 
-
+    private float dashCooldownTimer = 0f; // 쿨타임 타이머 변수 추가
+    public float dashCooldown = 0.5f; //대쉬 쿨타임
+    public float dashBufferTime = 0.5f;
+    public float dashInputBuffer = 0f;//대쉬버퍼
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         hitboxController = GetComponentInChildren<HitboxController>();
         hurtboxController = GetComponentInChildren<HurtboxController>();
+        dashController = GetComponent<DashController>();
         delay = GetComponentInChildren<Delay>();
         animator = GetComponent<Animator>();
         lastFlipX = spriteRenderer.flipX; // 초기 방향 저장
@@ -53,6 +65,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+
         // 점프 입력 버퍼 처리
         if (Input.GetButtonDown("Jump"))
         {
@@ -62,6 +75,20 @@ public class Player : MonoBehaviour
         {
             jumpInputBuffer -= Time.deltaTime;
         }
+
+
+        // 대쉬 입력 버퍼 처리
+        if (Input.GetButtonDown("Fire3") && dashCooldownTimer <= 0f)
+        {
+            dashInputBuffer = dashBufferTime;
+            dashCooldownTimer = dashCooldown;
+        }
+        else
+        {
+            dashInputBuffer -= Time.deltaTime;
+        }
+
+
 
         if (!delay.canAct) return;
 
@@ -101,7 +128,7 @@ public class Player : MonoBehaviour
             animator.SetBool("isJumping", true);  // 다시 트리거
 
         }
-        //점프버퍼
+
 
         // 수평 이동
         float h = Input.GetAxisRaw("Horizontal");
@@ -110,7 +137,7 @@ public class Player : MonoBehaviour
             rigid.linearVelocity = new Vector2(rigid.linearVelocity.x * 0.5f, rigid.linearVelocity.y);
         }
         // 이동 애니메이션 설정
-        animator.SetBool("isRunning", h != 0); 
+        animator.SetBool("isRunning", h != 0);
 
         // 방향 전환 애니메이션 설정
         // **방향이 바뀌었을 때만 "Turn" 애니메이션 실행**
@@ -121,8 +148,10 @@ public class Player : MonoBehaviour
         }
 
 
+
         //공격  
         //일반
+
         if (Input.GetButtonDown("Fire1") && !isJumping)
         {
             hitboxController.currentHitboxData = SAHitboxData;
@@ -132,6 +161,9 @@ public class Player : MonoBehaviour
             rigid.linearVelocity = rigid.linearVelocity * 0.3f;
             delay.SetDelay(0.4f);
         }
+
+
+
         if (Input.GetButtonDown("Fire1") && isJumping)
         {
             float vertical = Input.GetAxisRaw("Vertical"); // ↓ 입력 여부 확인 (-1이면 아래)
@@ -144,11 +176,8 @@ public class Player : MonoBehaviour
                 JDACount++;
                 animator.SetTrigger("JDA"); // 점프아래공격 애니메이션 실행
                 isAttacking = true;
-                rigid.linearVelocity = new Vector2(
-                    rigid.linearVelocity.x + 100 * (spriteRenderer.flipX ? -1 : 1),
-                    100f
-                );
-                delay.SetDelay(0.4f);
+                rigid.linearVelocity = new Vector2(rigid.linearVelocity.x + 100 * (spriteRenderer.flipX ? -1 : 1), 100f);
+                delay.SetDelay(0.6f);
             }
             // 점프공격 (↓ 입력 없을 때 & 횟수 제한)
             else if (vertical == 0 && JACount < 2)
@@ -162,23 +191,22 @@ public class Player : MonoBehaviour
                 delay.SetDelay(0.2f);
             }
         }
-        
+
+        // 대쉬 쿨타임 타이머 감소
+         if (dashCooldownTimer > 0f)
+        dashCooldownTimer -= Time.deltaTime;
+        if (dashInputBuffer > 0)
+        {
+            dashController.currentDashData = dashData;
+            animator.SetTrigger("dashTrigger"); // 대쉬공격 애니메이션 실행
+            delay.SetDelay(0.4f);
+            dashInputBuffer = 0f; // 버퍼 소비
+        }
         
     }
 
     void FixedUpdate()
     {
-        if (!delay.canAct) return;
-
-        
-        float h = Input.GetAxisRaw("Horizontal");
-
-        // AddForce를 사용해 한 번에 최대 속도로 힘을 가함
-        rigid.AddForce(Vector2.right * h * forceAmount, ForceMode2D.Impulse);
-
-        // 속도 제한 적용
-        rigid.linearVelocity = new Vector2(Mathf.Clamp(rigid.linearVelocity.x, -maxSpeed, maxSpeed), rigid.linearVelocity.y);
-
         //착지모션
         if (rigid.linearVelocity.y < 0)//땅에있을때
         {
@@ -195,10 +223,24 @@ public class Player : MonoBehaviour
             }
             
         }
+
+        
+        if (!delay.canAct) return;
+
+        
+        float h = Input.GetAxisRaw("Horizontal");
+
+        // AddForce를 사용해 한 번에 최대 속도로 힘을 가함
+        rigid.AddForce(Vector2.right * h * forceAmount, ForceMode2D.Impulse);
+
+        // 속도 제한 적용
+        rigid.linearVelocity = new Vector2(Mathf.Clamp(rigid.linearVelocity.x, -maxSpeed, maxSpeed), rigid.linearVelocity.y);
+
+        
     }
     
-        
     
+
 
     // 히트박스 켜기 (애니메이션 이벤트로 호출)
     public void EnableHitboxAtFrame(int frameIndex)
