@@ -8,24 +8,11 @@ public class Player : MonoBehaviour
     
     public Delay delay; //딜레이 스크립트 참조
     //일반공격
-    public HitboxData SAHitboxData; //일반공격
-    public HurtboxData SAHurtboxData; //일반공격 허트박스
-    public int SACount = 0; //일반공격 카운트
 
-    public HitboxData DSAHitboxData; //대쉬공격
-    public HurtboxData DSAHurtboxData; //대쉬공격 허트박스
-
-    //점프공격
-    public HitboxData JAHitboxData;
-    public HurtboxData JAHurtboxData;
-    public int JACount = 0; //점프공격 카운트
     //점프아래공격
-    public HitboxData JDAHitboxData; 
-    public HurtboxData JDAHurtboxData;
-    public int JDACount = 0;  //점프아래공격 카운트
-    //대쉬
     public DashData dashData; //대쉬 데이터
-
+    
+    public PlayerAttackinfo playerAttackinfo;
     public HitboxController hitboxController;
     public HurtboxController hurtboxController;
     private DashController dashController; //대쉬 스크립트 참조
@@ -60,6 +47,7 @@ public class Player : MonoBehaviour
         dashController = GetComponent<DashController>();
         delay = GetComponentInChildren<Delay>();
         animator = GetComponent<Animator>();
+        playerAttackinfo = GetComponent<PlayerAttackinfo>();
         lastFlipX = spriteRenderer.flipX; // 초기 방향 저장
     }
 
@@ -154,12 +142,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && !isJumping)
         {
-            hitboxController.currentHitboxData = SAHitboxData;
-            hurtboxController.currentHurtboxData = SAHurtboxData;
-            animator.SetTrigger("attackTrigger"); // 공격 애니메이션 실행
+            playerAttackinfo.StandAttack();
             isAttacking = true;
-            rigid.linearVelocity = rigid.linearVelocity * 0.3f;
-            delay.SetDelay(0.4f);
         }
 
 
@@ -167,34 +151,24 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && isJumping)
         {
             float vertical = Input.GetAxisRaw("Vertical"); // ↓ 입력 여부 확인 (-1이면 아래)
-
             // 점프아래공격 (↓ 입력 & 횟수 제한)
-            if (vertical < 0 && JDACount < 1)
+            if (vertical < 0 && playerAttackinfo.JDACount < 1)
             {
-                hitboxController.currentHitboxData = JDAHitboxData;
-                hurtboxController.currentHurtboxData = JDAHurtboxData;
-                JDACount++;
-                animator.SetTrigger("JDA"); // 점프아래공격 애니메이션 실행
+                playerAttackinfo.JumpDownAttack();
                 isAttacking = true;
-                rigid.linearVelocity = new Vector2(rigid.linearVelocity.x + 100 * (spriteRenderer.flipX ? -1 : 1), 100f);
-                delay.SetDelay(0.6f);
             }
             // 점프공격 (↓ 입력 없을 때 & 횟수 제한)
-            else if (vertical == 0 && JACount < 2)
+            else if (vertical == 0 && playerAttackinfo.JACount < 2)
             {
-                hitboxController.currentHitboxData = JAHitboxData;
-                hurtboxController.currentHurtboxData = JAHurtboxData;
-                JACount++;
-                animator.SetTrigger("jumpattackTrigger"); // 점프공격 애니메이션 실행
+                playerAttackinfo.JumpAttack();
                 isAttacking = true;
-                rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 100f);
-                delay.SetDelay(0.2f);
             }
         }
+        
 
         // 대쉬 쿨타임 타이머 감소
-         if (dashCooldownTimer > 0f)
-        dashCooldownTimer -= Time.deltaTime;
+        if (dashCooldownTimer > 0f)
+            dashCooldownTimer -= Time.deltaTime;
         if (dashInputBuffer > 0)
         {
             dashController.currentDashData = dashData;
@@ -218,8 +192,8 @@ public class Player : MonoBehaviour
                 animator.SetBool("isJumping", false);
                 isJumping = false;
                 jumpCount = 0;
-                JACount = 0; 
-                JDACount = 0;
+                playerAttackinfo.JACount = 0; 
+                playerAttackinfo.JDACount = 0;
             }
             
         }
