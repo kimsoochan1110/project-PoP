@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AttackData", menuName = "Game/AttackData")]
-public class AttackData : ScriptableObject
+[CreateAssetMenu(fileName = "ActData", menuName = "Game/ActData")]
+public class ActData : ScriptableObject
 {
     public HitboxData hitboxData;
     public HurtboxData hurtboxData;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerAttackinfo : MonoBehaviour
+public class PlayerActinfo : MonoBehaviour
 {
     public PlayerData playerData; // 에디터에서 캐릭터별 SO 할당
     public HitboxController hitboxController;
@@ -28,7 +28,7 @@ public class PlayerAttackinfo : MonoBehaviour
     }
     public void DoAttack(AttackType type)
     {
-        AttackData data = playerData != null ? playerData.GetAttackData(type) : null;
+        ActData data = playerData != null ? playerData.GetAttackData(type) : null;
         if (data == null)
         {
             Debug.LogWarning($"어택데이터 까먹음");

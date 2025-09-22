@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a086fd9615c20d5438e182d316b02665, type: 3}
-  m_Name: DSAttackData
+  m_Name: JActData
   m_EditorClassIdentifier: 
-  hitboxData: {fileID: 0}
-  hurtboxData: {fileID: 0}
-  dashData: {fileID: 11400000, guid: ce59ef30d174ff947b207febbb22652e, type: 2}
-  animatorTrigger: dashTrigger
-  delayTime: 0.4
+  hitboxData: {fileID: 11400000, guid: 214114bfbbc8cbd44909fa366845992c, type: 2}
+  hurtboxData: {fileID: 11400000, guid: 0141a9b8f3351d44bb7c8e36bfcfdccc, type: 2}
+  dashData: {fileID: 11400000, guid: 1fabfdf67778aef45949f7f4abded886, type: 2}
+  animatorTrigger: attackTrigger
+  delayTime: 0.2

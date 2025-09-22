@@ -4,25 +4,25 @@ using NUnit.Framework;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{   
-    
+{
+
     public Delay delay; //딜레이 스크립트 참조
-    //일반공격
+                        //일반공격
 
     //점프아래공격
 
-    
-    public PlayerAttackinfo playerAttackinfo;
+
+    public PlayerActinfo playerAttackinfo;
     public HitboxController hitboxController;
     public HurtboxController hurtboxController;
     private DashController dashController; //대쉬 스크립트 참조
     private Rigidbody2D rigid;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    
+
     public float maxSpeed; // 최대속도
     public float forceAmount; //가속정도
-    
+
     public bool isAttacking = false; // 공격 중인지 여부
     public bool lastFlipX; // 이전 방향 저장
 
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
         dashController = GetComponent<DashController>();
         delay = GetComponentInChildren<Delay>();
         animator = GetComponent<Animator>();
-        playerAttackinfo = GetComponent<PlayerAttackinfo>();
+        playerAttackinfo = GetComponent<PlayerActinfo>();
         lastFlipX = spriteRenderer.flipX; // 초기 방향 저장
     }
 
@@ -77,9 +77,8 @@ public class Player : MonoBehaviour
         }
 
 
-
         if (!delay.canAct) return;
-
+        
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         // 점프 실행
@@ -117,6 +116,16 @@ public class Player : MonoBehaviour
 
         }
 
+        // 대쉬 쿨타임 타이머 감소
+        if (dashCooldownTimer > 0f)
+            dashCooldownTimer -= Time.deltaTime;
+        if (dashInputBuffer > 0)
+        {
+            playerAttackinfo.DoAttack(AttackType.Dash);
+            dashInputBuffer = 0f; // 버퍼 소비
+        }
+
+
 
         // 수평 이동
         float h = Input.GetAxisRaw("Horizontal");
@@ -133,6 +142,12 @@ public class Player : MonoBehaviour
         {
             animator.SetTrigger("turnTrigger"); // "Turn" 실행
             spriteRenderer.flipX = !spriteRenderer.flipX; // 방향 변경
+        }
+
+        if (dashInputBuffer > 0)
+        {
+            playerAttackinfo.DoAttack(AttackType.Dash);
+            dashInputBuffer = 0f; // 버퍼 소비
         }
 
 
@@ -164,17 +179,7 @@ public class Player : MonoBehaviour
                 isAttacking = true;
             }
         }
-        
 
-        // 대쉬 쿨타임 타이머 감소
-        if (dashCooldownTimer > 0f)
-            dashCooldownTimer -= Time.deltaTime;
-        if (dashInputBuffer > 0)
-        {
-            playerAttackinfo.DoAttack(AttackType.Dash);
-            dashInputBuffer = 0f; // 버퍼 소비
-        }
-        
     }
 
     void FixedUpdate()
@@ -184,22 +189,22 @@ public class Player : MonoBehaviour
         {
             RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 7, LayerMask.GetMask("Ground") & ~LayerMask.GetMask("Sandbag"));
             if (rayHit.collider != null)//바닥감지
-            {   
-                if (rayHit.distance < 7)    
-                Debug.Log(rayHit.collider.name);
+            {
+                if (rayHit.distance < 7)
+                    Debug.Log(rayHit.collider.name);
                 animator.SetBool("isJumping", false);
                 isJumping = false;
                 jumpCount = 0;
-                playerAttackinfo.JACount = 0; 
+                playerAttackinfo.JACount = 0;
                 playerAttackinfo.JDACount = 0;
             }
-            
+
         }
 
-        
+
         if (!delay.canAct) return;
 
-        
+
         float h = Input.GetAxisRaw("Horizontal");
 
         // AddForce를 사용해 한 번에 최대 속도로 힘을 가함
@@ -208,9 +213,9 @@ public class Player : MonoBehaviour
         // 속도 제한 적용
         rigid.linearVelocity = new Vector2(Mathf.Clamp(rigid.linearVelocity.x, -maxSpeed, maxSpeed), rigid.linearVelocity.y);
 
-        
+
     }
-    
+
 
     // 히트박스 켜기 (애니메이션 이벤트로 호출)
     public void EnableHitboxAtFrame(int frameIndex)
@@ -226,10 +231,11 @@ public class Player : MonoBehaviour
 
 
     public void EnableHurtboxAtFrame(int frameIndex) //허트박스 프레임 감지
-    
+
     {
         hurtboxController.EnableHurtboxAtFrame(frameIndex);
     }
+
     public void ResetHutbox()
     {
         hurtboxController.ResetHurtbox();
@@ -238,5 +244,6 @@ public class Player : MonoBehaviour
     {
         hurtboxController.DisableHurtbox();
     }
+    
     
 }
