@@ -1,11 +1,10 @@
 public enum AttackType
 {
-    Stand,
-    Dash,
-    Jump,
-    JumpDown,
+    StandAttack,
+    JumpAttack,
+    JumpDownAttack,
     // 필요한 만큼 추가 (예: Skill1, Skill2 ... 총 14개까지)
-    Skill1,
+    Dash,
     Skill2,
     Skill3,
     Skill4,

@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     //일반공격
 
     //점프아래공격
-    public DashData dashData; //대쉬 데이터
+
     
     public PlayerAttackinfo playerAttackinfo;
     public HitboxController hitboxController;
@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && !isJumping)
         {
-            playerAttackinfo.StandAttack();
+            playerAttackinfo.DoAttack(AttackType.StandAttack);
             isAttacking = true;
         }
 
@@ -154,13 +154,13 @@ public class Player : MonoBehaviour
             // 점프아래공격 (↓ 입력 & 횟수 제한)
             if (vertical < 0 && playerAttackinfo.JDACount < 1)
             {
-                playerAttackinfo.JumpDownAttack();
+                playerAttackinfo.DoAttack(AttackType.JumpDownAttack);
                 isAttacking = true;
             }
             // 점프공격 (↓ 입력 없을 때 & 횟수 제한)
             else if (vertical == 0 && playerAttackinfo.JACount < 2)
             {
-                playerAttackinfo.JumpAttack();
+                playerAttackinfo.DoAttack(AttackType.JumpAttack);
                 isAttacking = true;
             }
         }
@@ -171,9 +171,7 @@ public class Player : MonoBehaviour
             dashCooldownTimer -= Time.deltaTime;
         if (dashInputBuffer > 0)
         {
-            dashController.currentDashData = dashData;
-            animator.SetTrigger("dashTrigger"); // 대쉬공격 애니메이션 실행
-            delay.SetDelay(0.4f);
+            playerAttackinfo.DoAttack(AttackType.Dash);
             dashInputBuffer = 0f; // 버퍼 소비
         }
         
@@ -213,8 +211,6 @@ public class Player : MonoBehaviour
         
     }
     
-    
-
 
     // 히트박스 켜기 (애니메이션 이벤트로 호출)
     public void EnableHitboxAtFrame(int frameIndex)

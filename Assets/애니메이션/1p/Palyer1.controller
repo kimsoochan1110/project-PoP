@@ -85,7 +85,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: jumpattackTrigger
+    m_ConditionEvent: attackTrigger
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8273715555963924521}
@@ -181,16 +181,16 @@ AnimatorStateMachine:
     m_Position: {x: 220, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8273715555963924521}
-    m_Position: {x: 730, y: 330, z: 0}
+    m_Position: {x: 920, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7251214366398485939}
-    m_Position: {x: 430, y: 430, z: 0}
+    m_Position: {x: 260, y: 570, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3013286438884732031}
     m_Position: {x: 1000, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6303482354677232999}
-    m_Position: {x: 950, y: 590, z: 0}
+    m_Position: {x: 720, y: 570, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 2347560357813463954}
@@ -807,19 +807,13 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: jumpattackTrigger
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: JDA
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: dashTrigger
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: downattackTriger
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -931,9 +925,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.2481089
-  m_TransitionOffset: 0
-  m_ExitTime: 0.0000000011434195
+  m_TransitionDuration: 0.23408532
+  m_TransitionOffset: 0.024652127
+  m_ExitTime: 0.04930426
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1001,7 +995,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: JDA
+    m_ConditionEvent: downattackTriger
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7251214366398485939}

@@ -2,32 +2,19 @@ using UnityEngine;
 
 public class PlayerAttackinfo : MonoBehaviour
 {
-    public Delay delay; //딜레이 스크립트 참조
-    //일반공격
-    public HitboxData SAHitboxData; //일반공격
-    public HurtboxData SAHurtboxData; //일반공격 허트박스
-    public int SACount = 0; //일반공격 카운트
-
-    public HitboxData DSAHitboxData; //대쉬공격
-    public HurtboxData DSAHurtboxData; //대쉬공격 허트박스
-
-    //점프공격
-    public HitboxData JAHitboxData;
-    public HurtboxData JAHurtboxData;
-    public int JACount = 0; //점프공격 카운트
-    //점프아래공격
-    public HitboxData JDAHitboxData;
-    public HurtboxData JDAHurtboxData;
-    public int JDACount = 0;  //점프아래공격 카운트
-    //대쉬
-    public DashData dashData; //대쉬 데이터
-
+    public PlayerData playerData; // 에디터에서 캐릭터별 SO 할당
     public HitboxController hitboxController;
     public HurtboxController hurtboxController;
-    private DashController dashController; //대쉬 스크립트 참조
-    private Rigidbody2D rigid;
+    public DashController dashController; //대쉬 스크립트 참조
+    [HideInInspector] public Rigidbody2D rigid;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    public Delay delay; //딜레이 스크립트 참조
+
+    // 카운트들 등 상태는 그대로 유지
+    public int SACount = 0;
+    public int JACount = 0;
+    public int JDACount = 0;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -39,32 +26,38 @@ public class PlayerAttackinfo : MonoBehaviour
         animator = GetComponent<Animator>();
 
     }
-    public void StandAttack()
+    public void DoAttack(AttackType type)
     {
-        hitboxController.currentHitboxData = SAHitboxData;
-        hurtboxController.currentHurtboxData = SAHurtboxData;
-        animator.SetTrigger("attackTrigger"); // 공격 애니메이션 실행
-        rigid.linearVelocity = rigid.linearVelocity * 0.3f;
-        delay.SetDelay(0.4f);
+        AttackData data = playerData != null ? playerData.GetAttackData(type) : null;
+        if (data == null)
+        {
+            Debug.LogWarning($"어택데이터 까먹음");
+            return;
+        }
+
+        // 히트/허트박스 설정
+        hitboxController.currentHitboxData = data.hitboxData;
+        hurtboxController.currentHurtboxData = data.hurtboxData;
+        dashController.currentDashData = data.dashData;
+
+        // 애니메이터 트리거
+        animator.SetTrigger(data.animatorTrigger);
+
+        
+        // 딜레이
+        if (delay != null) delay.SetDelay(data.delayTime);
+
+        // 카운트(특수 처리 필요하면 switch로 분기)
+        switch (type)
+        {
+            case AttackType.StandAttack: SACount++; break;
+            case AttackType.JumpAttack: JACount++; break;
+            case AttackType.JumpDownAttack: JDACount++; break;
+            // 필요 시 더 추가
+        }
     }
 
-    public void JumpAttack()
-    {
-        hitboxController.currentHitboxData = JAHitboxData;
-        hurtboxController.currentHurtboxData = JAHurtboxData;
-        JACount++;
-        animator.SetTrigger("jumpattackTrigger"); // 점프공격 애니메이션 실행
-        rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 100f);
-        delay.SetDelay(0.2f);
-    }
+    // 기존 메서드 호환성 (선택)
+    
 
-    public void JumpDownAttack()
-    {
-        hitboxController.currentHitboxData = JDAHitboxData;
-        hurtboxController.currentHurtboxData = JDAHurtboxData;
-        JDACount++;
-        animator.SetTrigger("JDA"); // 점프아래공격 애니메이션 실행
-        rigid.linearVelocity = new Vector2(rigid.linearVelocity.x + 100 * (spriteRenderer.flipX ? -1 : 1), 100f);
-        delay.SetDelay(0.6f);
-    }
 }
