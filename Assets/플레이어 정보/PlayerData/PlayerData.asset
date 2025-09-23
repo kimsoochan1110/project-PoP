@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6113a3b88ed405c49aea4328e78a7b20, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  attacks:
+  acts:
+  - {fileID: 11400000, guid: 0befa54ddaa2a004fae37f302c089731, type: 2}
   - {fileID: 11400000, guid: 0c3b6bfe54be4bb45bcfd8810013ea5c, type: 2}
   - {fileID: 11400000, guid: 2b1775b9b0f7ff54cbdc00cccc1988c5, type: 2}
   - {fileID: 11400000, guid: 57f46a33af1064c4d8e1329999413f79, type: 2}
-  - {fileID: 11400000, guid: 0befa54ddaa2a004fae37f302c089731, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: e6b650d83fe8e964b942dbaba41f5096, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        float vertical = Input.GetAxisRaw("Vertical");
 
         // 점프 입력 버퍼 처리
         if (Input.GetButtonDown("Jump"))
@@ -121,7 +122,7 @@ public class Player : MonoBehaviour
             dashCooldownTimer -= Time.deltaTime;
         if (dashInputBuffer > 0)
         {
-            playerAttackinfo.DoAttack(AttackType.Dash);
+            playerAttackinfo.DoAction(ActType.Dash);
             dashInputBuffer = 0f; // 버퍼 소비
         }
 
@@ -146,7 +147,7 @@ public class Player : MonoBehaviour
 
         if (dashInputBuffer > 0)
         {
-            playerAttackinfo.DoAttack(AttackType.Dash);
+            playerAttackinfo.DoAction(ActType.Dash);
             dashInputBuffer = 0f; // 버퍼 소비
         }
 
@@ -154,28 +155,36 @@ public class Player : MonoBehaviour
 
         //공격  
         //일반
-
         if (Input.GetButtonDown("Fire1") && !isJumping)
         {
-            playerAttackinfo.DoAttack(AttackType.StandAttack);
-            isAttacking = true;
+            // 위공
+            if (vertical > 0)
+            {
+                playerAttackinfo.DoAction(ActType.UPAttack);
+                isAttacking = true;
+            }
+            // 가만공
+            else if (vertical == 0)
+            {
+                playerAttackinfo.DoAction(ActType.StandAttack);
+                isAttacking = true;
+            }
         }
 
 
 
         if (Input.GetButtonDown("Fire1") && isJumping)
-        {
-            float vertical = Input.GetAxisRaw("Vertical"); // ↓ 입력 여부 확인 (-1이면 아래)
+        { // ↓ 입력 여부 확인 (-1이면 아래)
             // 점프아래공격 (↓ 입력 & 횟수 제한)
             if (vertical < 0 && playerAttackinfo.JDACount < 1)
             {
-                playerAttackinfo.DoAttack(AttackType.JumpDownAttack);
+                playerAttackinfo.DoAction(ActType.JumpDownAttack);
                 isAttacking = true;
             }
             // 점프공격 (↓ 입력 없을 때 & 횟수 제한)
             else if (vertical == 0 && playerAttackinfo.JACount < 2)
             {
-                playerAttackinfo.DoAttack(AttackType.JumpAttack);
+                playerAttackinfo.DoAction(ActType.JumpAttack);
                 isAttacking = true;
             }
         }

@@ -1,11 +1,10 @@
-public enum AttackType
+public enum ActType
 {
+    Dash,
     StandAttack,
     JumpAttack,
     JumpDownAttack,
-    // 필요한 만큼 추가 (예: Skill1, Skill2 ... 총 14개까지)
-    Dash,
-    Skill2,
+    UPAttack,
     Skill3,
     Skill4,
     Skill5,

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a086fd9615c20d5438e182d316b02665, type: 3}
   m_Name: UAActData
   m_EditorClassIdentifier: 
-  hitboxData: {fileID: 0}
-  hurtboxData: {fileID: 0}
+  hitboxData: {fileID: 11400000, guid: 53a55d43c8a16634e972805a8a9f5b7d, type: 2}
+  hurtboxData: {fileID: 11400000, guid: a76b8291d0c3f0e4689a61cbbdffccec, type: 2}
   dashData: {fileID: 0}
-  animatorTrigger: 
-  delayTime: 0
+  animatorTrigger: upattackTriger
+  delayTime: 0.4

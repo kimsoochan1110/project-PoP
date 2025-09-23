@@ -6,7 +6,7 @@ public class PlayerActinfo : MonoBehaviour
     public HitboxController hitboxController;
     public HurtboxController hurtboxController;
     public DashController dashController; //대쉬 스크립트 참조
-    [HideInInspector] public Rigidbody2D rigid;
+    public Rigidbody2D rigid;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     public Delay delay; //딜레이 스크립트 참조
@@ -15,6 +15,7 @@ public class PlayerActinfo : MonoBehaviour
     public int SACount = 0;
     public int JACount = 0;
     public int JDACount = 0;
+    public int UACount = 0;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -26,7 +27,7 @@ public class PlayerActinfo : MonoBehaviour
         animator = GetComponent<Animator>();
 
     }
-    public void DoAttack(AttackType type)
+    public void DoAction(ActType type)
     {
         ActData data = playerData != null ? playerData.GetAttackData(type) : null;
         if (data == null)
@@ -50,9 +51,10 @@ public class PlayerActinfo : MonoBehaviour
         // 카운트(특수 처리 필요하면 switch로 분기)
         switch (type)
         {
-            case AttackType.StandAttack: SACount++; break;
-            case AttackType.JumpAttack: JACount++; break;
-            case AttackType.JumpDownAttack: JDACount++; break;
+            case ActType.StandAttack: SACount++; break;
+            case ActType.JumpAttack: JACount++; break;
+            case ActType.JumpDownAttack: JDACount++; break;
+            case ActType.UPAttack: UACount++; break;
             // 필요 시 더 추가
         }
     }
