@@ -8,5 +8,6 @@ public class ActData : ScriptableObject
     public DashData dashData;
     public string animatorTrigger;
     public float delayTime;
+    public float rigidMultiply;
     // 필요하면 VFX, SFX, 추가 파라미터(넉백, 히트스탑 등) 추가
 }

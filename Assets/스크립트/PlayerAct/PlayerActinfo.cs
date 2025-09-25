@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerActinfo : MonoBehaviour
 {
     public PlayerData playerData; // 에디터에서 캐릭터별 SO 할당
+    public Player player;
     public HitboxController hitboxController;
     public HurtboxController hurtboxController;
     public DashController dashController; //대쉬 스크립트 참조
@@ -12,11 +13,8 @@ public class PlayerActinfo : MonoBehaviour
     public Delay delay; //딜레이 스크립트 참조
 
     // 카운트들 등 상태는 그대로 유지
-    public int SACount = 0;
     public int JACount = 0;
-    public int JDACount = 0;
-    public int UACount = 0;
-    void Start()
+    public int JDACount = 0;    void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -40,21 +38,20 @@ public class PlayerActinfo : MonoBehaviour
         hitboxController.currentHitboxData = data.hitboxData;
         hurtboxController.currentHurtboxData = data.hurtboxData;
         dashController.currentDashData = data.dashData;
+        
 
         // 애니메이터 트리거
         animator.SetTrigger(data.animatorTrigger);
 
         
         // 딜레이
-        if (delay != null) delay.SetDelay(data.delayTime);
+        delay.SetDelay(data.delayTime);
 
         // 카운트(특수 처리 필요하면 switch로 분기)
         switch (type)
         {
-            case ActType.StandAttack: SACount++; break;
             case ActType.JumpAttack: JACount++; break;
             case ActType.JumpDownAttack: JDACount++; break;
-            case ActType.UPAttack: UACount++; break;
             // 필요 시 더 추가
         }
     }

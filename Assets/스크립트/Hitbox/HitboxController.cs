@@ -55,7 +55,7 @@ public class HitboxController : MonoBehaviour
                 return;
             }
             
-            Debug.Log("샌드백 피격!");
+            Debug.Log("플레이어 피격!");
             DamageReceiver receiver = other.GetComponentInParent<DamageReceiver>();
             if (receiver != null)
             {

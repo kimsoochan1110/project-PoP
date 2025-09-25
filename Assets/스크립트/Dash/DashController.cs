@@ -49,7 +49,7 @@ public class DashController : MonoBehaviour
         rigid.linearVelocity = baseVel + (direction.normalized * frame.DashForce);
         rigid.gravityScale = frame.gravityScale;
     }
-        private void ApplyYDashFrame(int frameIndex)
+    private void ApplyYDashFrame(int frameIndex)
     {
         if (currentDashData == null || frameIndex < 0 || frameIndex >= currentDashData.frames.Length)
             return;

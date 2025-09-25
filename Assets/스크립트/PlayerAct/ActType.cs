@@ -5,7 +5,7 @@ public enum ActType
     JumpAttack,
     JumpDownAttack,
     UPAttack,
-    Skill3,
+    DownAttack,
     Skill4,
     Skill5,
     Skill6,

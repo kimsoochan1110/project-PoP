@@ -169,22 +169,32 @@ public class Player : MonoBehaviour
                 playerAttackinfo.DoAction(ActType.StandAttack);
                 isAttacking = true;
             }
+            else if (vertical < 0)
+            { 
+             // 앉아공격 (↓ 입력 & 땅에 있을 때)
+                playerAttackinfo.DoAction(ActType.DownAttack);
+                isAttacking = true;
+            }
         }
 
 
 
         if (Input.GetButtonDown("Fire1") && isJumping)
         { // ↓ 입력 여부 확인 (-1이면 아래)
-            // 점프아래공격 (↓ 입력 & 횟수 제한)
-            if (vertical < 0 && playerAttackinfo.JDACount < 1)
+            // 점프위공격
+            if (vertical > 0 && playerAttackinfo.JDACount < 1)
             {
-                playerAttackinfo.DoAction(ActType.JumpDownAttack);
-                isAttacking = true;
             }
-            // 점프공격 (↓ 입력 없을 때 & 횟수 제한)
+            // 점프공격
             else if (vertical == 0 && playerAttackinfo.JACount < 2)
             {
                 playerAttackinfo.DoAction(ActType.JumpAttack);
+                isAttacking = true;
+            }
+            // 점프아래공격
+            if (vertical < 0 && playerAttackinfo.JDACount < 1)
+            {
+                playerAttackinfo.DoAction(ActType.JumpDownAttack);
                 isAttacking = true;
             }
         }

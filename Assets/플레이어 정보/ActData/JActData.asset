@@ -17,3 +17,4 @@ MonoBehaviour:
   dashData: {fileID: 11400000, guid: 1fabfdf67778aef45949f7f4abded886, type: 2}
   animatorTrigger: attackTrigger
   delayTime: 0.2
+  rigidMultiply: 1

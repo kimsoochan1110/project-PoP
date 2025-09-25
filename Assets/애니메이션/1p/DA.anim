@@ -21,10 +21,12 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
+      value: {fileID: -4027846254937213553, guid: 347d3076540034b42970a47899fc1980, type: 3}
+    - time: 0.16666667
       value: {fileID: -780373124727000055, guid: 4dec98daf5e56b6448ef6ce5675a95ce, type: 3}
-    - time: 0.083333336
+    - time: 0.33333334
       value: {fileID: 2504258005674532265, guid: 4dec98daf5e56b6448ef6ce5675a95ce, type: 3}
-    - time: 0.25
+    - time: 0.5
       value: {fileID: -3721400742328757493, guid: 4dec98daf5e56b6448ef6ce5675a95ce, type: 3}
     attribute: m_Sprite
     path: 
@@ -48,6 +50,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
+    - {fileID: -4027846254937213553, guid: 347d3076540034b42970a47899fc1980, type: 3}
     - {fileID: -780373124727000055, guid: 4dec98daf5e56b6448ef6ce5675a95ce, type: 3}
     - {fileID: 2504258005674532265, guid: 4dec98daf5e56b6448ef6ce5675a95ce, type: 3}
     - {fileID: -3721400742328757493, guid: 4dec98daf5e56b6448ef6ce5675a95ce, type: 3}
@@ -56,7 +59,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.5833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -75,4 +78,46 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.33333334
+    functionName: EnableHitboxAtFrame
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: EnableHurtboxAtFrame
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: SetYvelocity
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.41666666
+    functionName: EnableHitboxAtFrame
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
+  - time: 0.5
+    functionName: DisableHitbox
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: ResetHutbox
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
