@@ -16,5 +16,5 @@ MonoBehaviour:
   hurtboxData: {fileID: 11400000, guid: c1ac17ebf89832742a58eb602fb7c35c, type: 2}
   dashData: {fileID: 11400000, guid: d0e8978a2973a394f8524b7554a03edf, type: 2}
   animatorTrigger: downattackTriger
-  delayTime: 0.6
+  delayTime: 0.7
   rigidMultiply: 1

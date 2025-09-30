@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbfc101321c27d9448f914d9677ccf46, type: 3}
-  m_Name: JDA
+  m_Name: JUA
   m_EditorClassIdentifier: 
   frames:
-  - direction: {x: -1, y: 1}
-    DashForce: 100
-    gravityScale: 0
-  - direction: {x: 1, y: -0.5}
-    DashForce: 250
+  - direction: {x: 1, y: 0.5}
+    DashForce: 200
     gravityScale: 35

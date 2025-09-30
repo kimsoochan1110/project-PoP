@@ -14,7 +14,8 @@ public class PlayerActinfo : MonoBehaviour
 
     // 카운트들 등 상태는 그대로 유지
     public int JACount = 0;
-    public int JDACount = 0;    void Start()
+    public int JUACount = 0;
+    void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -51,7 +52,7 @@ public class PlayerActinfo : MonoBehaviour
         switch (type)
         {
             case ActType.JumpAttack: JACount++; break;
-            case ActType.JumpDownAttack: JDACount++; break;
+            case ActType.JumpUPAttack: JUACount++; break;
             // 필요 시 더 추가
         }
     }

@@ -1,11 +1,12 @@
 public enum ActType
 {
     Dash,
+    UPAttack,
     StandAttack,
+    DownAttack,
+    JumpUPAttack,
     JumpAttack,
     JumpDownAttack,
-    UPAttack,
-    DownAttack,
     Skill4,
     Skill5,
     Skill6,

@@ -82,6 +82,55 @@ public class Player : MonoBehaviour
         
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
+        //공격  
+        //일반
+        if (Input.GetButtonDown("Fire1") && !isJumping)
+        {
+            // 위공
+            if (vertical > 0)
+            {
+                playerAttackinfo.DoAction(ActType.UPAttack);
+                isAttacking = true;
+            }
+            // 가만공
+            else if (vertical == 0)
+            {
+                playerAttackinfo.DoAction(ActType.StandAttack);
+                isAttacking = true;
+            }
+            else if (vertical < 0)
+            { 
+             // 앉아공격 (↓ 입력 & 땅에 있을 때)
+                playerAttackinfo.DoAction(ActType.DownAttack);
+                isAttacking = true;
+            }
+        }
+
+
+
+        if (Input.GetButtonDown("Fire1") && isJumping)
+        { // ↓ 입력 여부 확인 (-1이면 아래)
+            // 점프위공격
+            if (vertical > 0 && playerAttackinfo.JUACount < 1)
+            {
+                playerAttackinfo.DoAction(ActType.JumpUPAttack);
+                isAttacking = true;
+            }
+            // 점프공격
+            else if (vertical == 0 && playerAttackinfo.JACount < 2)
+            {
+                playerAttackinfo.DoAction(ActType.JumpAttack);
+                isAttacking = true;
+            }
+            // 점프아래공격
+            else if (vertical < 0)
+            {
+                playerAttackinfo.DoAction(ActType.JumpDownAttack);
+                isAttacking = true;
+            }
+        }
+        
+
         // 점프 실행
         if (jumpInputBuffer > 0 && jumpCount < maxJumpCount)
         {
@@ -153,51 +202,8 @@ public class Player : MonoBehaviour
 
 
 
-        //공격  
-        //일반
-        if (Input.GetButtonDown("Fire1") && !isJumping)
-        {
-            // 위공
-            if (vertical > 0)
-            {
-                playerAttackinfo.DoAction(ActType.UPAttack);
-                isAttacking = true;
-            }
-            // 가만공
-            else if (vertical == 0)
-            {
-                playerAttackinfo.DoAction(ActType.StandAttack);
-                isAttacking = true;
-            }
-            else if (vertical < 0)
-            { 
-             // 앉아공격 (↓ 입력 & 땅에 있을 때)
-                playerAttackinfo.DoAction(ActType.DownAttack);
-                isAttacking = true;
-            }
-        }
-
-
-
-        if (Input.GetButtonDown("Fire1") && isJumping)
-        { // ↓ 입력 여부 확인 (-1이면 아래)
-            // 점프위공격
-            if (vertical > 0 && playerAttackinfo.JDACount < 1)
-            {
-            }
-            // 점프공격
-            else if (vertical == 0 && playerAttackinfo.JACount < 2)
-            {
-                playerAttackinfo.DoAction(ActType.JumpAttack);
-                isAttacking = true;
-            }
-            // 점프아래공격
-            if (vertical < 0 && playerAttackinfo.JDACount < 1)
-            {
-                playerAttackinfo.DoAction(ActType.JumpDownAttack);
-                isAttacking = true;
-            }
-        }
+        
+        Debug.Log($"vertical={vertical}");
 
     }
 
@@ -215,7 +221,7 @@ public class Player : MonoBehaviour
                 isJumping = false;
                 jumpCount = 0;
                 playerAttackinfo.JACount = 0;
-                playerAttackinfo.JDACount = 0;
+                playerAttackinfo.JUACount = 0;
             }
 
         }

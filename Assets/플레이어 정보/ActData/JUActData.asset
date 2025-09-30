@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a086fd9615c20d5438e182d316b02665, type: 3}
-  m_Name: JDActData
+  m_Name: JUActData
   m_EditorClassIdentifier: 
-  hitboxData: {fileID: 11400000, guid: 6aa5c26d65d8a9d47ba51293e7d6fa55, type: 2}
-  hurtboxData: {fileID: 11400000, guid: a59e3c86f86a6e44686b737d2cd878ac, type: 2}
-  dashData: {fileID: 11400000, guid: 6748e2b8fedf966439154cb12bcab5d2, type: 2}
-  animatorTrigger: downattackTriger
-  delayTime: 0.65
+  hitboxData: {fileID: 11400000, guid: 7e898c32c1ad6c647a25ce2240876d9d, type: 2}
+  hurtboxData: {fileID: 11400000, guid: 78b6a127046fb8641be31555dacff88e, type: 2}
+  dashData: {fileID: 11400000, guid: 57886b907cff25f43ad63e6f8534d670, type: 2}
+  animatorTrigger: upattackTriger
+  delayTime: 0.6
   rigidMultiply: 1

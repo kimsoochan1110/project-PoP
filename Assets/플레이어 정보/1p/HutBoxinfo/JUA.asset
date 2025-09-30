@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbfc101321c27d9448f914d9677ccf46, type: 3}
-  m_Name: JDA
+  m_Script: {fileID: 11500000, guid: d96e0c1fa924dac4d9bb78bd7936d776, type: 3}
+  m_Name: JUA
   m_EditorClassIdentifier: 
   frames:
-  - direction: {x: -1, y: 1}
-    DashForce: 100
-    gravityScale: 0
-  - direction: {x: 1, y: -0.5}
-    DashForce: 250
-    gravityScale: 35
+  - offset: {x: 0, y: 0}
+    size: {x: 30, y: 25}
+  - offset: {x: 5, y: 0}
+    size: {x: 25, y: 25}
