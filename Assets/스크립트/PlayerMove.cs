@@ -7,9 +7,7 @@ public class Player : MonoBehaviour
 {
 
     public Delay delay; //딜레이 스크립트 참조
-                        //일반공격
-
-    //점프아래공격
+    public Stun stun; //스턴 스크립트 참조
 
 
     public PlayerActinfo playerAttackinfo;
@@ -46,6 +44,7 @@ public class Player : MonoBehaviour
         hurtboxController = GetComponentInChildren<HurtboxController>();
         dashController = GetComponent<DashController>();
         delay = GetComponentInChildren<Delay>();
+        stun = GetComponent<Stun>();
         animator = GetComponent<Animator>();
         playerAttackinfo = GetComponent<PlayerActinfo>();
         lastFlipX = spriteRenderer.flipX; // 초기 방향 저장
@@ -79,6 +78,7 @@ public class Player : MonoBehaviour
 
 
         if (!delay.canAct) return;
+        if (!stun.canAct) return;
         
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
@@ -228,6 +228,7 @@ public class Player : MonoBehaviour
 
 
         if (!delay.canAct) return;
+        if (!stun.canAct) return;
 
 
         float h = Input.GetAxisRaw("Horizontal");
