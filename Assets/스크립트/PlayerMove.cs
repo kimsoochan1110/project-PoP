@@ -2,10 +2,11 @@ using System.Collections;
 using JetBrains.Annotations;
 using NUnit.Framework;
 using UnityEngine;
-
+    
 public class Player : MonoBehaviour
 {
 
+    public int playerIndex = 1;
     public Delay delay; //딜레이 스크립트 참조
     public Stun stun; //스턴 스크립트 참조
 
