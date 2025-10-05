@@ -13,5 +13,5 @@ public enum ActType
     Skill7,
     Skill8,
     Skill9,
-    Skill10
+    Hit
 }

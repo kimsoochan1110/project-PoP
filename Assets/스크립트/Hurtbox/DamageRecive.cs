@@ -2,19 +2,22 @@ using UnityEngine;
 
 public class DamageReceiver : MonoBehaviour
 {
+    private PlayerActinfo playerActinfo;
     private Rigidbody2D rigid;
     private Animator animator;
     private Stun stun;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        playerActinfo = GetComponent<PlayerActinfo>();
         animator = GetComponent<Animator>();
         stun = GetComponent<Stun>();
     }
 
     public void TakeHit(HitboxFrameData data, Vector3 attackerPosition)
     {
-        animator.SetTrigger("Hit"); //히트 애니메이션 재생
+        animator.SetTrigger("Hit");
+        playerActinfo.DoAction(ActType.Hit);
 
         Vector2 baseDirection = data.knockbackDirection.normalized; //넉백 방향
 
