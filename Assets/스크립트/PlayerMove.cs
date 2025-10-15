@@ -6,10 +6,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    public int playerIndex = 1;
     public Delay delay; //딜레이 스크립트 참조
     public Stun stun; //스턴 스크립트 참조
 
+    public int playerIndex = 1; // Inspector에서 1 또는 2 설정 (입력 접미사: _1P, _2P)
 
     public PlayerActinfo playerAttackinfo;
     public HitboxController hitboxController;
@@ -50,13 +50,23 @@ public class Player : MonoBehaviour
         playerAttackinfo = GetComponent<PlayerActinfo>();
         lastFlipX = spriteRenderer.flipX; // 초기 방향 저장
     }
+    // 입력 이름에 플레이어 인덱스 접미사 붙여 반환
+    private string InputName(string baseName)
+    {
+        if (playerIndex <= 0) return baseName;
+        return $"{baseName}_{playerIndex}P"; // 예: "Vertical_1P"
+    }
+    private float Axis(string name) => Input.GetAxisRaw(InputName(name));
+    private bool ButtonDown(string name) => Input.GetButtonDown(InputName(name));
+    private bool Button(string name) => Input.GetButton(InputName(name));
+    private bool ButtonUp(string name) => Input.GetButtonUp(InputName(name));
 
     private void Update()
     {
-        float vertical = Input.GetAxisRaw("Vertical");
+        float vertical = Axis("Vertical");
 
         // 점프 입력 버퍼 처리
-        if (Input.GetButtonDown("Jump"))
+        if (ButtonDown("Jump"))
         {
             jumpInputBuffer = jumpInputBufferTime;
         }
@@ -67,7 +77,7 @@ public class Player : MonoBehaviour
 
 
         // 대쉬 입력 버퍼 처리
-        if (Input.GetButtonDown("Fire3") && dashCooldownTimer <= 0f)
+        if (ButtonDown("Fire3") && dashCooldownTimer <= 0f)
         {
             dashInputBuffer = dashBufferTime;
             dashCooldownTimer = dashCooldown;
@@ -85,7 +95,7 @@ public class Player : MonoBehaviour
 
         //공격  
         //일반
-        if (Input.GetButtonDown("Fire1") && !isJumping)
+        if (ButtonDown("Fire1") && !isJumping)
         {
             // 위공
             if (vertical > 0)
@@ -109,7 +119,7 @@ public class Player : MonoBehaviour
 
 
 
-        if (Input.GetButtonDown("Fire1") && isJumping)
+        if (ButtonDown("Fire1") && isJumping)
         { // ↓ 입력 여부 확인 (-1이면 아래)
             // 점프위공격
             if (vertical > 0 && playerAttackinfo.JUACount < 1)
@@ -143,13 +153,13 @@ public class Player : MonoBehaviour
         }
 
         // 버튼 누르는 시간 기록
-        if (Input.GetButton("Jump") && isJumping)
+        if (Button("Jump") && isJumping)
         {
             jumpTime += Time.deltaTime;
         }
 
         // 소점프 처리
-        if (Input.GetButtonUp("Jump") && isJumping)
+        if (ButtonUp("Jump") && isJumping)
         {
             if (jumpTime <= 8f / 60f) // 소점프 기준 프레임
             {
@@ -179,10 +189,10 @@ public class Player : MonoBehaviour
 
 
         // 수평 이동
-        float h = Input.GetAxisRaw("Horizontal");
-        if (Input.GetButtonUp("Horizontal"))
+        float h = Axis("Horizontal");
+        if (ButtonUp("Horizontal"))
         {
-            rigid.linearVelocity = new Vector2(rigid.linearVelocity.x * 0.5f, rigid.linearVelocity.y);
+            rigid.linearVelocity = new Vector2(rigid.linearVelocity.x * 0.05f, rigid.linearVelocity.y);
         }
         // 이동 애니메이션 설정
         animator.SetBool("isRunning", h != 0);
@@ -193,6 +203,7 @@ public class Player : MonoBehaviour
         {
             animator.SetTrigger("turnTrigger"); // "Turn" 실행
             spriteRenderer.flipX = !spriteRenderer.flipX; // 방향 변경
+            rigid.linearVelocity = new Vector2(rigid.linearVelocity.x * 0f, rigid.linearVelocity.y); // 방향 전환 시 속도 0으로 초기화
         }
 
         if (dashInputBuffer > 0)
@@ -232,7 +243,7 @@ public class Player : MonoBehaviour
         if (!stun.canAct) return;
 
 
-        float h = Input.GetAxisRaw("Horizontal");
+        float h = Axis("Horizontal");
 
         // AddForce를 사용해 한 번에 최대 속도로 힘을 가함
         rigid.AddForce(Vector2.right * h * forceAmount, ForceMode2D.Impulse);

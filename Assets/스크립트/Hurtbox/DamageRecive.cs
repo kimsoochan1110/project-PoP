@@ -16,11 +16,9 @@ public class DamageReceiver : MonoBehaviour
 
     public void TakeHit(HitboxFrameData data, Vector3 attackerPosition)
     {
-        animator.SetTrigger("Hit");
-        playerActinfo.DoAction(ActType.Hit);
+        
 
         Vector2 baseDirection = data.knockbackDirection.normalized; //넉백 방향
-
         stun.SetStun(data.stunTime); // 스턴 적용
 
         // 공격자가 오른쪽에 있으면 방향 반전

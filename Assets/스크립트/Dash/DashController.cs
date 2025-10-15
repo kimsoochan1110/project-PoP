@@ -47,7 +47,7 @@ public class DashController : MonoBehaviour
 
         // X,Y 처리: 기본적으로 X는 덮어쓰고 Y는 보존(혹은 데이터 명시시 덮어쓰기)
         Vector2 baseVel = target.linearVelocity;
-        float newY = Mathf.Abs(direction.y) > 0.001f ? direction.normalized.y * frame.DashForce : baseVel.y;
+        float newY = direction.normalized.y * frame.DashForce;
         float newX = direction.normalized.x * frame.DashForce;
         target.linearVelocity = new Vector2(newX, newY);
         target.gravityScale = frame.gravityScale;
