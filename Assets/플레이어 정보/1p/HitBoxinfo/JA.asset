@@ -22,7 +22,7 @@ MonoBehaviour:
     hitStopTime: 0.1
   - damage: 0
     knockbackDirection: {x: 1, y: 0.5}
-    knockbackPower: 150
+    knockbackPower: 175
     stunTime: 0.5
     offset: {x: 0, y: 4}
     size: {x: 27, y: 15}

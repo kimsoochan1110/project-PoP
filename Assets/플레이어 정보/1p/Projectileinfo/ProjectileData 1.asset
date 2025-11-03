@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bdc79b50aa280d479d8c7e1909ad96e, type: 3}
+  m_Name: ProjectileData 1
+  m_EditorClassIdentifier: 
+  frames:
+  - projectilePrefab: {fileID: 502680505114587457, guid: 6a8bae19e9905f14398bb7dd8b08e844, type: 3}
+    speed: 100
+    projectileDirection: {x: 1, y: 1}
+    offset: {x: 10, y: 5}
+    lifeTime: 3
+    knockbackDirection: {x: 0, y: 0}
+    damage: 0
+    knockbackPower: 0
+    stunTime: 0
+    hitStopTime: 0

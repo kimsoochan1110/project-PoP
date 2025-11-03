@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ActData", menuName = "Game/ActData")]
 public class ActData : ScriptableObject
 {
+    public ProjectileData projectileData;
     public HitboxData hitboxData;
     public HurtboxData hurtboxData;
     public DashData dashData;

@@ -4,6 +4,7 @@ public class PlayerActinfo : MonoBehaviour
 {
     public PlayerData playerData; // 에디터에서 캐릭터별 SO 할당
     public Player player;
+    public ProjectileController projectileController;
     public HitboxController hitboxController;
     public HurtboxController hurtboxController;
     public DashController dashController; //대쉬 스크립트 참조
@@ -19,6 +20,7 @@ public class PlayerActinfo : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        projectileController = GetComponentInChildren<ProjectileController>();
         hitboxController = GetComponentInChildren<HitboxController>();
         hurtboxController = GetComponentInChildren<HurtboxController>();
         dashController = GetComponent<DashController>();
@@ -34,6 +36,8 @@ public class PlayerActinfo : MonoBehaviour
             Debug.LogWarning($"어택데이터 까먹음");
             return;
         }
+        //투사체 설정
+        projectileController.currentProjectileData = data.projectileData;
 
         // 히트/허트박스 설정
         hitboxController.currentHitboxData = data.hitboxData;

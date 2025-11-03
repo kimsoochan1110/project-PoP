@@ -230,6 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 06614f957c7bf7d46a5f0b779cd3029c, type: 2}
   player: {fileID: 0}
+  projectileController: {fileID: 0}
   hitboxController: {fileID: 466661043}
   hurtboxController: {fileID: 1652271329}
   dashController: {fileID: 0}
@@ -270,6 +271,7 @@ MonoBehaviour:
   playerAttackinfo: {fileID: 0}
   hitboxController: {fileID: 466661043}
   hurtboxController: {fileID: 1652271329}
+  projectileController: {fileID: 0}
   maxSpeed: 100
   forceAmount: 15
   isAttacking: 0
@@ -1327,7 +1329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &964223420
 Rigidbody2D:
   serializedVersion: 5
@@ -2144,6 +2146,7 @@ MonoBehaviour:
   playerAttackinfo: {fileID: 0}
   hitboxController: {fileID: 1931815752}
   hurtboxController: {fileID: 1503163874}
+  projectileController: {fileID: 0}
   maxSpeed: 100
   forceAmount: 15
   isAttacking: 0
@@ -2187,6 +2190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 06614f957c7bf7d46a5f0b779cd3029c, type: 2}
   player: {fileID: 0}
+  projectileController: {fileID: 0}
   hitboxController: {fileID: 1931815752}
   hurtboxController: {fileID: 1503163874}
   dashController: {fileID: 0}
@@ -2243,27 +2247,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1371621747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fdb5935f18883345b98087f5910f6b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  currentProjectileData: {fileID: 0}
+  projectileData:
+    projectilePrefab: {fileID: 0}
+    speed: 0
+    projectileDirection: {x: 1, y: 0}
+    offset: {x: 0, y: 0}
+    lifeTime: 0
+    knockbackDirection: {x: 1, y: 0}
+    damage: 0
+    knockbackPower: 0
+    stunTime: 0
+    hitStopTime: 0
+  projectileTemplate: {fileID: 0}
 --- !u!1 &1413905122
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,7 +2447,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 8, y: 15}
+  m_Size: {x: 10, y: 20}
   m_EdgeRadius: 0
 --- !u!1 &1584629081
 GameObject:
@@ -2660,7 +2659,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 8, y: 15}
+  m_Size: {x: 10, y: 20}
   m_EdgeRadius: 0
 --- !u!4 &1652271331
 Transform:

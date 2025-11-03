@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public PlayerActinfo playerAttackinfo;
     public HitboxController hitboxController;
     public HurtboxController hurtboxController;
+    public ProjectileController projectileController;
     private DashController dashController; //대쉬 스크립트 참조
     private Rigidbody2D rigid;
     private SpriteRenderer spriteRenderer;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         hitboxController = GetComponentInChildren<HitboxController>();
         hurtboxController = GetComponentInChildren<HurtboxController>();
+        projectileController = GetComponentInChildren<ProjectileController>();
         dashController = GetComponent<DashController>();
         delay = GetComponentInChildren<Delay>();
         stun = GetComponent<Stun>();
@@ -140,6 +142,26 @@ public class Player : MonoBehaviour
                 isAttacking = true;
             }
         }
+
+        if (ButtonUp("Fire2"))
+        { // ↓ 입력 여부 확인 (-1이면 아래)
+            // 점프위공격
+            if (vertical > 0)
+            {
+                
+            }
+            // 점프공격
+            else if (vertical == 0)
+            {
+                playerAttackinfo.DoAction(ActType.StandShoot);
+                isAttacking = true;
+            }
+            // 점프아래공격
+            else if (vertical < 0)
+            {
+                
+            }
+        }
         
 
         // 점프 실행
@@ -235,7 +257,6 @@ public class Player : MonoBehaviour
                 playerAttackinfo.JACount = 0;
                 playerAttackinfo.JUACount = 0;
             }
-
         }
 
 
@@ -248,7 +269,7 @@ public class Player : MonoBehaviour
         // AddForce를 사용해 한 번에 최대 속도로 힘을 가함
         rigid.AddForce(Vector2.right * h * forceAmount, ForceMode2D.Impulse);
 
-        // 속도 제한 적용
+        // 속도 제한 적용x`
         rigid.linearVelocity = new Vector2(Mathf.Clamp(rigid.linearVelocity.x, -maxSpeed, maxSpeed), rigid.linearVelocity.y);
 
 
@@ -283,5 +304,8 @@ public class Player : MonoBehaviour
         hurtboxController.DisableHurtbox();
     }
     
-    
+    public void EnableProjectileFrame(int frameIndex)
+    {
+        projectileController.EnableProjectileFrame(frameIndex);
+    }
 }
