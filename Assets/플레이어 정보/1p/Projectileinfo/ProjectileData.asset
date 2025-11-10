@@ -15,11 +15,14 @@ MonoBehaviour:
   frames:
   - projectilePrefab: {fileID: 1121648898206599010, guid: 6e7326afc45090947a891dd48f0a4c90, type: 3}
     speed: 300
+    rotation: 0
     projectileDirection: {x: 1, y: 0}
     offset: {x: 15, y: 0}
     lifeTime: 3
-    knockbackDirection: {x: 0, y: 0}
+    destroyPrefab: {fileID: 1283516699109700224, guid: 7bcfc0f3ce993ef438c6ac3d73ba1ee6, type: 3}
+    explosionLifeTime: 0.7
+    knockbackDirection: {x: 1, y: 1}
     damage: 0
-    knockbackPower: 0
-    stunTime: 0
-    hitStopTime: 0
+    knockbackPower: 150
+    stunTime: 0.5
+    hitStopTime: 0.01

@@ -8,6 +8,7 @@ TagManager:
   - AttackHitBox
   - Sandbag
   - Hurtbox
+  - HItbox
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Player
   - Sandbag
   - Projectile
-  - 
-  - 
+  - HItbox
+  - Hurtbox
   - 
   - 
   - 

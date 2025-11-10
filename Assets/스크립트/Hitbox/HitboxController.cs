@@ -45,7 +45,7 @@ public class HitboxController : MonoBehaviour
         hitbox.enabled = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) //히트감지
+    public void OnTriggerEnter2D(Collider2D other) //히트감지
     {
         if (other.CompareTag("Hurtbox"))
         {

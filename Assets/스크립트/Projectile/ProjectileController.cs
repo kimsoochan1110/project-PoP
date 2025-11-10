@@ -7,10 +7,8 @@ public class ProjectileController : MonoBehaviour
     private Rigidbody2D rigid;
     private SpriteRenderer spriteRenderer;
     public ProjectileData currentProjectileData; // 플레이어가 공격 시작 시 할당
-    ProjectileFrameData currentFrameData;
+    public ProjectileFrameData currentFrameData;
     private int currentFrameIndex;
-    public ProjectileFrameData projectileData;
-    public GameObject projectileTemplate;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
@@ -34,35 +32,41 @@ public class ProjectileController : MonoBehaviour
     Vector3 spawnPos = transform.position + (Vector3)offset;
 
     // 프리팹 null 체크
-    GameObject prefab = currentFrameData.projectilePrefab;
-    if (prefab == null)
+    GameObject projectilePrefab = currentFrameData.projectilePrefab;
+
+    ProjectileFrameData hitData = new ProjectileFrameData
     {
-        Debug.LogWarning("프리팹 없음 " + frameIndex);
-        return;
-    }
+        lifeTime = currentFrameData.lifeTime,
+        damage = currentFrameData.damage,
+        knockbackDirection = currentFrameData.knockbackDirection,
+        knockbackPower = currentFrameData.knockbackPower,
+        stunTime = currentFrameData.stunTime,
+        explosionLifeTime = currentFrameData.explosionLifeTime,
+        destroyPrefab = currentFrameData.destroyPrefab
+        // 필요하면 추가 필드 복사
+    };
 
-    // 반드시 Instantiate 해서 씬에 인스턴스 생성
-    GameObject instance = Instantiate(prefab, spawnPos, Quaternion.identity);
-    instance.transform.parent = null; // 템플릿이 플레이어 자식일 경우 묶이지 않게 분리
+        // 반드시 Instantiate 해서 씬에 인스턴스 생성
+    GameObject instance = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+    instance.transform.parent = null;
 
-    // Rigidbody2D 가져와서 속도 설정 (null 체크)
+    var projectileHitbox = instance.GetComponent<ProjectileHitbox>();
+    projectileHitbox.Init(gameObject, hitData);
+
+        // Rigidbody2D 가져와서 속도 설정 (null 체크)
     Rigidbody2D rigid = instance.GetComponent<Rigidbody2D>();
-    if (rigid == null) rigid = instance.AddComponent<Rigidbody2D>();
-    // 필요하면 bodyType/gravity 조정 (프리팹 기본 설정 권장)
-    rigid.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
+    
+    
     Vector2 direction = currentFrameData.projectileDirection;
-    if (direction == Vector2.zero) direction = Vector2.right;
     if (facingLeft) direction.x *= -1;
-
+    rigid.AddTorque(currentFrameData.rotation, ForceMode2D.Impulse);
     rigid.linearVelocity = direction.normalized * currentFrameData.speed;
 
     // 스프라이트 flip 처리 (프리팹에 SpriteRenderer가 있으면 덮어쓰기)
     var sr = instance.GetComponent<SpriteRenderer>();
     if (sr != null) sr.flipX = facingLeft;
 
-    // 수명 설정
-    Destroy(instance, Mathf.Max(0.01f, currentFrameData.lifeTime));
         
     }
     public void EnableProjectileFrame(int frameIndex)
@@ -72,4 +76,5 @@ public class ProjectileController : MonoBehaviour
             ApplyProjectile(frameIndex, spriteRenderer != null ? spriteRenderer.flipX : false);
         }
     }
+    
 }

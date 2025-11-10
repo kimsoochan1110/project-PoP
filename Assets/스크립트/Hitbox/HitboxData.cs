@@ -13,6 +13,7 @@ public class HitboxFrameData
 }
 [CreateAssetMenu(fileName = "HitboxData", menuName = "ScriptableObjects/HitboxData", order = 2)]
 public class HitboxData : ScriptableObject
-{
+{   
+    
     public HitboxFrameData[] frames;
 }

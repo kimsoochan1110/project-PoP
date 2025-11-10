@@ -17,5 +17,5 @@ MonoBehaviour:
   hurtboxData: {fileID: 0}
   dashData: {fileID: 0}
   animatorTrigger: shootTrigger
-  delayTime: 0.5
+  delayTime: 0.2
   rigidMultiply: 0
