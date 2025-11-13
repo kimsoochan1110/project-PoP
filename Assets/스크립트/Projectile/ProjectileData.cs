@@ -1,8 +1,11 @@
+// 이 스크립트는 투사체의 데이터를 정의하는 ScriptableObject입니다.
 using UnityEngine;
 
 [System.Serializable]
 public class ProjectileFrameData
 {
+    public GameObject hitEffectPrefab; // 히트 이펙트 프리팹
+    public float hitEffectLifeTime; // 히트 이펙트 유지 시간(프리팹 자체가 자동 삭제하면 무시됨)
     //무브인포
     public GameObject projectilePrefab; // 투사체 프리팹
     public float speed; // 속도

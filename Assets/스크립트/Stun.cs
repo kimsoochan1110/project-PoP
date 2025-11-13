@@ -1,3 +1,4 @@
+// 이 스크립트는 캐릭터가 스턴 상태에 빠졌을 때의 동작을 관리합니다.
 using System.Collections;
 using UnityEngine;
 

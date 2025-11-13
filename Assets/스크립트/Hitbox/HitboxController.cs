@@ -1,4 +1,5 @@
 // 이 스크립트는 AttackHitbox 오브젝트에 붙는다
+// 공격 프레임에 따라 히트박스 크기와 위치를 조정하고, 충돌 시 데미지 처리를 담당한다.
 using UnityEngine;
 
 public class HitboxController : MonoBehaviour
@@ -57,14 +58,10 @@ public class HitboxController : MonoBehaviour
             
             Debug.Log("플레이어 피격!");
             DamageReceiver receiver = other.GetComponentInParent<DamageReceiver>();
-            if (receiver != null)
-            {
-                // ✅ 히트스톱 실행
-            if (currentFrameData.hitStopTime > 0)
-                HitStopManager.Instance.DoHitStop(currentFrameData.hitStopTime);
+            
+            
 
-                receiver.TakeHit(currentFrameData, transform.position);; // 여기서 피격 애니메이션 호출
-            }
+            receiver.TakeHit(currentFrameData, transform.position);; // 여기서 피격 애니메이션 호출
         }       
     }
 }

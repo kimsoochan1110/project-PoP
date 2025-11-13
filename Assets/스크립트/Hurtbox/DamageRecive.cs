@@ -1,3 +1,4 @@
+// 이 스크립트는 데미지를 받는 캐릭터의 동작을 처리합니다.
 using UnityEngine;
 
 public class DamageReceiver : MonoBehaviour
@@ -16,7 +17,19 @@ public class DamageReceiver : MonoBehaviour
 
     public void TakeHit(HitboxFrameData data, Vector3 attackerPosition)
     {
+        if (data.hitEffectPrefab != null)
+        {
+            if (transform.Find(data.hitEffectPrefab.name + "(Clone)") != null) //중복감지
+                Destroy(transform.Find(data.hitEffectPrefab.name + "(Clone)").gameObject);
 
+            GameObject hitEffectInstance = Instantiate(data.hitEffectPrefab, transform.position, Quaternion.identity);
+            hitEffectInstance.transform.parent = transform; // 히트 이펙트를 피격 대상의 자식으로 설정
+            Destroy(hitEffectInstance, data.hitEffectLifeTime);
+
+        }
+        
+        if (data.hitStopTime > 0) // ✅ 히트스톱 실행
+            HitStopManager.Instance.DoHitStop(data.hitStopTime);
 
         Vector2 baseDirection = data.knockbackDirection.normalized; //넉백 방향
         stun.SetStun(data.stunTime); // 스턴 적용
@@ -35,7 +48,18 @@ public class DamageReceiver : MonoBehaviour
 
     public void ProjectileTakeHit(ProjectileFrameData data, Vector3 attackerPosition)
     {
-        
+        if (data.hitEffectPrefab != null)
+        {
+            if (transform.Find(data.hitEffectPrefab.name + "(Clone)") != null) //중복감지
+                Destroy(transform.Find(data.hitEffectPrefab.name + "(Clone)").gameObject);
+
+            GameObject hitEffectInstance = Instantiate(data.hitEffectPrefab, transform.position, Quaternion.identity);
+            hitEffectInstance.transform.parent = transform; // 히트 이펙트를 피격 대상의 자식으로 설정
+            Destroy(hitEffectInstance, data.hitEffectLifeTime);
+        }
+
+        if (data.hitStopTime > 0) // ✅ 히트스톱 실행
+            HitStopManager.Instance.DoHitStop(data.hitStopTime);
 
         Vector2 baseDirection = data.knockbackDirection.normalized; //넉백 방향
         stun.SetStun(data.stunTime); // 스턴 적용

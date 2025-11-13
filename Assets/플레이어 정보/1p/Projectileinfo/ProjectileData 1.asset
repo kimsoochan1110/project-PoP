@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: ProjectileData 1
   m_EditorClassIdentifier: 
   frames:
-  - projectilePrefab: {fileID: 502680505114587457, guid: 6a8bae19e9905f14398bb7dd8b08e844, type: 3}
+  - hitEffectPrefab: {fileID: 5811548040273412219, guid: 01a504c6228197a49937c28449b8a12e, type: 3}
+    hitEffectLifeTime: 0.45
+    projectilePrefab: {fileID: 502680505114587457, guid: 6a8bae19e9905f14398bb7dd8b08e844, type: 3}
     speed: 100
     rotation: 100
     projectileDirection: {x: 1, y: 1}
@@ -25,4 +27,5 @@ MonoBehaviour:
     damage: 0
     knockbackPower: 200
     stunTime: 0.7
-    hitStopTime: 0.015
+    hitStopTime: 0.15
+    reloadTime: 0

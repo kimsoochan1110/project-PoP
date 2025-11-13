@@ -9,6 +9,8 @@ TagManager:
   - Sandbag
   - Hurtbox
   - HItbox
+  - Lifedestroyer
+  - Foot
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - Projectile
   - HItbox
   - Hurtbox
-  - 
+  - Lifedestroyer
   - 
   - 
   - 

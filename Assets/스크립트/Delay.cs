@@ -1,3 +1,4 @@
+// 이 스크립트는 일정 시간 동안 행동을 지연시키는 기능을 제공합니다.
 using UnityEngine;
 
 public class Delay : MonoBehaviour

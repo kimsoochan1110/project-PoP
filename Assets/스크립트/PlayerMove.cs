@@ -1,3 +1,5 @@
+// 이 스크립트는 플레이어의 이동 및 행동을 제어하는 컴포넌트입니다.
+// 플레이어의 입력을 처리하고, 점프, 대쉬, 공격 등의 동작을 수행합니다.
 using System.Collections;
 using JetBrains.Annotations;
 using NUnit.Framework;
@@ -67,17 +69,6 @@ public class Player : MonoBehaviour
     {
         float vertical = Axis("Vertical");
 
-        // 점프 입력 버퍼 처리
-        if (ButtonDown("Jump"))
-        {
-            jumpInputBuffer = jumpInputBufferTime;
-        }
-        else
-        {
-            jumpInputBuffer -= Time.deltaTime;
-        }
-
-
         // 대쉬 입력 버퍼 처리
         if (ButtonDown("Fire3") && dashCooldownTimer <= 0f)
         {
@@ -89,12 +80,32 @@ public class Player : MonoBehaviour
             dashInputBuffer -= Time.deltaTime;
         }
 
+        // 점프 입력 버퍼 처리
+        if (ButtonDown("Jump"))
+        {
+            jumpInputBuffer = jumpInputBufferTime;
+        }
+        else
+        {
+            jumpInputBuffer -= Time.deltaTime;
+        }
+
+
+        
+
 
         if (!delay.canAct) return;
         if (!stun.canAct) return;
         
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
+        // 공중에서 대쉬+공격 동시입력 시 대쉬 우선 처리
+        if (dashInputBuffer > 0f && isJumping)
+        {
+            dashInputBuffer = 0f;
+            playerAttackinfo.DoAction(ActType.Dash);
+            isAttacking = true;
+            return; // 대쉬가 우선이면 해당 프레임의 공격 처리는 건너뜀
+        }
         //공격  
         //일반
         if (ButtonDown("Fire1") && !isJumping)
@@ -243,10 +254,10 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 7, LayerMask.GetMask("Ground") & ~LayerMask.GetMask("Sandbag"));
         //착지모션
         if (rigid.linearVelocity.y < 0)//땅에있을때
         {
-            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 7, LayerMask.GetMask("Ground") & ~LayerMask.GetMask("Sandbag"));
             if (rayHit.collider != null)//바닥감지
             {
                 if (rayHit.distance < 7)
@@ -258,6 +269,11 @@ public class Player : MonoBehaviour
                 playerAttackinfo.JUACount = 0;
             }
         }
+        else if (rigid.linearVelocity.y >= 0 && rayHit.collider == null)
+        {
+            isJumping = true;
+            animator.SetBool("isJumping", true);
+        } 
 
 
         if (!delay.canAct) return;

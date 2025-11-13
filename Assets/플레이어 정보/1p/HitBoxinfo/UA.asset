@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: UA
   m_EditorClassIdentifier: 
   frames:
-  - damage: 0
+  - hitEffectPrefab: {fileID: 5811548040273412219, guid: 01a504c6228197a49937c28449b8a12e, type: 3}
+    hitEffectLifeTime: 0.45
     knockbackDirection: {x: 0.5, y: 1}
     knockbackPower: 150
     stunTime: 0.5
     offset: {x: 0, y: 10}
     size: {x: 20, y: 20}
     hitStopTime: 0.1
-  - damage: 0
+  - hitEffectPrefab: {fileID: 5811548040273412219, guid: 01a504c6228197a49937c28449b8a12e, type: 3}
+    hitEffectLifeTime: 0.45
     knockbackDirection: {x: 0.5, y: 1}
     knockbackPower: 100
     stunTime: 0.5

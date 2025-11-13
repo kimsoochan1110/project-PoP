@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a086fd9615c20d5438e182d316b02665, type: 3}
+  m_Name: JA_GActData
+  m_EditorClassIdentifier: 
+  projectileData: {fileID: 11400000, guid: 20bd6f679bfe2fd4e8d6ff85fea6e679, type: 2}
+  hitboxData: {fileID: 0}
+  hurtboxData: {fileID: 0}
+  dashData: {fileID: 11400000, guid: 2643ec8cac32a4d48a9a0d9a3cf7065a, type: 2}
+  animatorTrigger: attackTrigger
+  delayTime: 0.6
+  rigidMultiply: 1

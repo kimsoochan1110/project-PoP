@@ -1,3 +1,4 @@
+// 이 스크립트는 히트스톱(일시정지) 효과를 관리하는 싱글톤 매니저입니다.
 using System.Collections;
 using UnityEngine;
 

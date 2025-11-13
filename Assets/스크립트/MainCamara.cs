@@ -1,3 +1,4 @@
+// 이 스크립트는 메인 카메라의 기본 동작을 정의하는 컴포넌트입니다.
 using UnityEngine;
 
 public class MainCamara : MonoBehaviour

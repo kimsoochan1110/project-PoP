@@ -1,3 +1,4 @@
+// 이 스크립트는 허트박스 데이터를 정의하는 ScriptableObject입니다.
 using UnityEngine;
 
 [System.Serializable]

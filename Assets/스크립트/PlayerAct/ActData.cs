@@ -1,3 +1,4 @@
+// 이 스크립트는 플레이어의 액션 데이터를 정의하는 ScriptableObject입니다.
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ActData", menuName = "Game/ActData")]

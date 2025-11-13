@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: JUA
   m_EditorClassIdentifier: 
   frames:
-  - damage: 0
+  - hitEffectPrefab: {fileID: 5811548040273412219, guid: 01a504c6228197a49937c28449b8a12e, type: 3}
+    hitEffectLifeTime: 0.45
     knockbackDirection: {x: 1, y: -1}
     knockbackPower: 400
     stunTime: 0.5

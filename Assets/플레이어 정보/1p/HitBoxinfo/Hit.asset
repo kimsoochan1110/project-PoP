@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Hit
   m_EditorClassIdentifier: 
   frames:
-  - damage: 0
+  - hitEffectPrefab: {fileID: 5811548040273412219, guid: 01a504c6228197a49937c28449b8a12e, type: 3}
+    hitEffectLifeTime: 0.45
     knockbackDirection: {x: 0, y: 0}
     knockbackPower: 0
     stunTime: 0

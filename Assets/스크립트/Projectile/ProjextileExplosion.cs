@@ -1,3 +1,4 @@
+// 이 스크립트는 투사체의 폭발 효과를 처리하는 컴포넌트입니다.
 using UnityEngine;
 
 public class ProjectileExplosion : MonoBehaviour

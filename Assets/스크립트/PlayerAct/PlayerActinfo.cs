@@ -1,3 +1,5 @@
+// 이 스크립트는 플레이어의 액션 정보를 관리하는 컴포넌트입니다.
+// 플레이어의 공격, 대쉬 등의 액션 데이터를 설정하고 애니메이션을 제어합니다.
 using UnityEngine;
 
 public class PlayerActinfo : MonoBehaviour

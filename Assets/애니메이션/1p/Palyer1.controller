@@ -194,7 +194,7 @@ AnimatorStateMachine:
     m_Position: {x: -30, y: 700, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8168426708980801896}
-    m_Position: {x: -60, y: 220, z: 0}
+    m_Position: {x: 240, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1160104502876239234}
     m_Position: {x: 1440, y: 370, z: 0}
@@ -247,15 +247,18 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isStunned
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isJumping
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1724274582069476169}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.32944354
-  m_TransitionOffset: 0
-  m_ExitTime: 0.0000000060252514
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0.42883167
+  m_ExitTime: 1.0720793
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -728,6 +731,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: isStunned
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3034162195637668367}
@@ -1334,6 +1340,31 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &3115923827272043462
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: dashTrigger
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -6303482354677232999}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 5.2400884e-10
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &3201740142475936497
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1526,6 +1557,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: dashTrigger
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isStunned
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6303482354677232999}
   m_Solo: 0
@@ -1607,6 +1641,7 @@ AnimatorState:
   - {fileID: -7718697054209195945}
   - {fileID: -361470276763325718}
   - {fileID: -4067076241718705092}
+  - {fileID: 3115923827272043462}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
