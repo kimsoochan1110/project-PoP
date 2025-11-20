@@ -17,15 +17,16 @@ MonoBehaviour:
     hitEffectLifeTime: 0.45
     projectilePrefab: {fileID: 2454417738927017762, guid: ca850eade78c3814ea158fdc63c9e72a, type: 3}
     speed: 400
+    angle: 0
     rotation: 0
     projectileDirection: {x: 1, y: 0}
     offset: {x: 7, y: 3}
     lifeTime: 3
     destroyPrefab: {fileID: 4927341605662042587, guid: de28b8264455a2c4d90dae5c7019a04b, type: 3}
-    explosionLifeTime: 0.5
+    explosionLifeTime: 0.2
     knockbackDirection: {x: 1, y: 1}
     damage: 0
     knockbackPower: 200
-    stunTime: 0.5
+    stunTime: 0.7
     hitStopTime: 0.05
     reloadTime: 0.3

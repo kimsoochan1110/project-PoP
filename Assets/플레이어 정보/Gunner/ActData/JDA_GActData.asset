@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: JDA_GActData
   m_EditorClassIdentifier: 
   projectileData: {fileID: 0}
-  hitboxData: {fileID: 0}
-  hurtboxData: {fileID: 0}
-  dashData: {fileID: 0}
-  animatorTrigger: 
-  delayTime: 0
-  rigidMultiply: 0
+  hitboxData: {fileID: 11400000, guid: 972429d0131b4c541b31acfc707b0f0f, type: 2}
+  hurtboxData: {fileID: 11400000, guid: 63c43de8ec5c1794a945f0c7c40d4fcd, type: 2}
+  dashData: {fileID: 11400000, guid: 4864574c904e54f4f9c6b0924d9736b3, type: 2}
+  animatorTrigger: downattackTriger
+  delayTime: 0.5
+  rigidMultiply: 1

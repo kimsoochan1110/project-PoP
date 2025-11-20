@@ -5,8 +5,17 @@ public class PlayerState : MonoBehaviour
 {
     public int life = 3;
     public int bulletCount;
-
     public float InvincibilityFrame;
     public float stunTimeEditor;
     public float knuckbackEditor;
+
+    public void OnDestroy()
+    {
+        if (life <= 0)
+        {
+            Debug.Log("Player has been destroyed.");
+            Destroy(gameObject);
+        }
+    }
 }
+       

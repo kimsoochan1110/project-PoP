@@ -140,8 +140,8 @@ TextureImporter:
         y: 2747
         width: 551
         height: 356
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.18865468, y: 0.16267996}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -162,8 +162,8 @@ TextureImporter:
         y: 2722
         width: 1489
         height: 1020
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.15052278, y: 0.068319164}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -184,8 +184,8 @@ TextureImporter:
         y: 210
         width: 2057
         height: 2315
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.09412642, y: 0.043024577}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -199,103 +199,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC77C\uB7EC\uC2A4\uD2B82ek_3"
-      rect:
-        serializedVersion: 2
-        x: 5385
-        y: 1182
-        width: 67
-        height: 467
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e8925aee511c59910800000000000000
-      internalID: 1843591922420361614
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC77C\uB7EC\uC2A4\uD2B82ek_4"
-      rect:
-        serializedVersion: 2
-        x: 6248
-        y: 908
-        width: 90
-        height: 207
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 15970cf597c38b590800000000000000
-      internalID: -7658304674348369583
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC77C\uB7EC\uC2A4\uD2B82ek_5"
-      rect:
-        serializedVersion: 2
-        x: 6552
-        y: 900
-        width: 286
-        height: 264
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8e7dd4c51f6dc31b0800000000000000
-      internalID: -5675425098269599768
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC77C\uB7EC\uC2A4\uD2B82ek_6"
-      rect:
-        serializedVersion: 2
-        x: 6747
-        y: 1095
-        width: 113
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0b7bb88f2e88a3220800000000000000
-      internalID: 2466434254352660400
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: "\uC77C\uB7EC\uC2A4\uD2B82ek_7"
       rect:
         serializedVersion: 2
         x: 4747
         y: 189
-        width: 693
-        height: 893
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 753
+        height: 1700
+      alignment: 9
+      pivot: {x: 0.1354828, y: 0.07280417}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -309,72 +221,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC77C\uB7EC\uC2A4\uD2B82ek_8"
-      rect:
-        serializedVersion: 2
-        x: 6269
-        y: 864
-        width: 154
-        height: 112
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2b09ef7af799d2d90800000000000000
-      internalID: -7120866662244511566
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC77C\uB7EC\uC2A4\uD2B82ek_9"
-      rect:
-        serializedVersion: 2
-        x: 6525
-        y: 887
-        width: 30
-        height: 109
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2cfeb709af19a3e40800000000000000
-      internalID: 5636978388959489986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC77C\uB7EC\uC2A4\uD2B82ek_10"
-      rect:
-        serializedVersion: 2
-        x: 6536
-        y: 244
-        width: 429
-        height: 459
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c747ee653e0785350800000000000000
-      internalID: 6005674224816911484
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: "\uC77C\uB7EC\uC2A4\uD2B82ek_11"
       rect:
         serializedVersion: 2
@@ -383,7 +229,7 @@ TextureImporter:
         width: 46
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -400,7 +246,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f3ad1ae9a78e811429bab186c3c05cea
     internalID: 0
     vertices: []
     indices: 
@@ -409,7 +255,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\uC77C\uB7EC\uC2A4\uD2B82ek_0": 2018095969277042640
+      "\uC77C\uB7EC\uC2A4\uD2B82ek_1": 7616089479131318696
+      "\uC77C\uB7EC\uC2A4\uD2B82ek_11": -8781076985282967953
+      "\uC77C\uB7EC\uC2A4\uD2B82ek_2": 8973362147733835604
+      "\uC77C\uB7EC\uC2A4\uD2B82ek_7": -5931058365070572008
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

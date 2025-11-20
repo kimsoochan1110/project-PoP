@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Gunner
   m_EditorClassIdentifier: 
   acts:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 88815c4ec9f2d1c4399b5e4a425af694, type: 2}
   - {fileID: 0}
   - {fileID: 11400000, guid: 47c72b372beee574d9eb5cbb4a08b88d, type: 2}
   - {fileID: 11400000, guid: 6b253d108f0576947bd30a8f570daa5c, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 532d536866e58b14382c8cac8a921039, type: 2}
   - {fileID: 11400000, guid: ed3bf627d9ba13b4fb116b36477ca4dc, type: 2}
+  - {fileID: 11400000, guid: a86ab553948941d4380dbffee8545a48, type: 2}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 2ea5b23863549264d9ba7fd866b4b632, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

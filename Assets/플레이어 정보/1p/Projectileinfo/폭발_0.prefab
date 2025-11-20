@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -8500382979851445508, guid: bd1e7da5830c753459ef4f9e0c09ad68, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.48867923, b: 0.48867923, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -171,18 +171,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  projectileCollider: {fileID: 0}
+  explosionCollider: {fileID: 0}
   currentFrameData:
+    hitEffectPrefab: {fileID: 0}
+    hitEffectLifeTime: 0
     projectilePrefab: {fileID: 0}
     speed: 0
+    angle: 0
     rotation: 0
     projectileDirection: {x: 1, y: 0}
     offset: {x: 0, y: 0}
     lifeTime: 0
-    explosionLifeTime: 0
     destroyPrefab: {fileID: 0}
+    explosionLifeTime: 0
     knockbackDirection: {x: 1, y: 1}
     damage: 0
     knockbackPower: 0
     stunTime: 0
     hitStopTime: 0
+    reloadTime: 0

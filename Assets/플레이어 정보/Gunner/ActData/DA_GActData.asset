@@ -18,4 +18,4 @@ MonoBehaviour:
   dashData: {fileID: 0}
   animatorTrigger: downattackTriger
   delayTime: 0.5
-  rigidMultiply: 0
+  rigidMultiply: 0.5

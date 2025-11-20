@@ -21,6 +21,7 @@ public class PlayerActinfo : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        player = GetComponent<Player>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         projectileController = GetComponentInChildren<ProjectileController>();
         hitboxController = GetComponentInChildren<HitboxController>();
@@ -49,7 +50,8 @@ public class PlayerActinfo : MonoBehaviour
 
         // 애니메이터 트리거
         animator.SetTrigger(data.animatorTrigger);
-
+        
+        rigid.linearVelocity = rigid.linearVelocity * data.rigidMultiply;
         
         // 딜레이
         delay.SetDelay(data.delayTime);

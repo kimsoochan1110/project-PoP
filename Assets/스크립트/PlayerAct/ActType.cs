@@ -8,11 +8,11 @@ public enum ActType
     JumpUPAttack,
     JumpAttack,
     JumpDownAttack,
-    Skill4,
+    UPShoot,
     StandShoot,
-    Skill6,
-    Skill7,
-    Skill8,
-    Skill9,
+    DownShoot,
+    JumpUpShoot,
+    JumpShoot,
+    JumpDownShoot,
     Hit
 }

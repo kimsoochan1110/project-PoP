@@ -159,7 +159,8 @@ public class Player : MonoBehaviour
             // 점프위공격
             if (vertical > 0)
             {
-                
+                playerAttackinfo.DoAction(ActType.UPShoot);
+                isAttacking = true;
             }
             // 점프공격
             else if (vertical == 0)
@@ -170,7 +171,30 @@ public class Player : MonoBehaviour
             // 점프아래공격
             else if (vertical < 0)
             {
-                
+                playerAttackinfo.DoAction(ActType.DownShoot);
+                isAttacking = true;
+            }
+        }
+
+        if (ButtonUp("Fire2") && isJumping)
+        { // ↓ 입력 여부 확인 (-1이면 아래)
+            // 점프위공격
+            if (vertical > 0)
+            {
+                playerAttackinfo.DoAction(ActType.JumpUpShoot);
+                isAttacking = true;
+            }
+            // 점프공격
+            else if (vertical == 0)
+            {
+                playerAttackinfo.DoAction(ActType.JumpShoot);
+                isAttacking = true;
+            }
+            // 점프아래공격
+            else if (vertical < 0)
+            {
+                playerAttackinfo.DoAction(ActType.JumpDownShoot);
+                isAttacking = true;
             }
         }
         

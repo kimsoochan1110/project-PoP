@@ -33,7 +33,7 @@ public class ProjectileHitbox : MonoBehaviour
         if (other == null) return;
 
         // 피격 대상이 Hurtbox 태그면 처리
-        if (other.CompareTag("Hurtbox"))
+        if (other.CompareTag("Hurtbox") || other.CompareTag("Ground"))
         {
             ExplodeAndDestroy();
         }

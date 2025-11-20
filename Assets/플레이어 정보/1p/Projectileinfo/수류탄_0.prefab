@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 502680505114587457}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.6527, y: 0.3633, z: 0}
-  m_LocalScale: {x: 0.2043, y: 0.2043, z: 0.2043}
+  m_LocalPosition: {x: -28.237, y: 0.0209, z: 0}
+  m_LocalScale: {x: 0.14452884, y: 0.17387974, z: 0.17387974}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -6751298847335079703, guid: 1b680d0d51a59ad49973039d4c3dd15b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -175,3 +175,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213e9cf5079200342aff7df5449088c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  projectileCollider: {fileID: 0}
+  currentFrameData:
+    hitEffectPrefab: {fileID: 0}
+    hitEffectLifeTime: 0
+    projectilePrefab: {fileID: 0}
+    speed: 0
+    angle: 0
+    rotation: 0
+    projectileDirection: {x: 1, y: 0}
+    offset: {x: 0, y: 0}
+    lifeTime: 0
+    destroyPrefab: {fileID: 0}
+    explosionLifeTime: 0
+    knockbackDirection: {x: 1, y: 0}
+    damage: 0
+    knockbackPower: 0
+    stunTime: 0
+    hitStopTime: 0
+    reloadTime: 0

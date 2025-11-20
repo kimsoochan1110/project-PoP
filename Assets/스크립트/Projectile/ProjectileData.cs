@@ -9,7 +9,8 @@ public class ProjectileFrameData
     //무브인포
     public GameObject projectilePrefab; // 투사체 프리팹
     public float speed; // 속도
-    public float rotation; // 회전
+    public float angle; // 각도
+    public float rotation; // 회전력
     public Vector2 projectileDirection = Vector2.right; //발사 방향
     public Vector2 offset; // 발사 위치
     public float lifeTime; //초

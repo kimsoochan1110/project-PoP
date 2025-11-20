@@ -84,6 +84,11 @@ public class ProjectileController : MonoBehaviour
         if (facingLeft) direction.x *= -1;
 
         rigid.AddTorque(currentFrameData.rotation, ForceMode2D.Impulse);
+
+        float angle = currentFrameData.angle;
+        if (facingLeft) angle = -angle;
+        instance.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+      
         rigid.linearVelocity = direction.normalized * currentFrameData.speed;
 
         var sr = instance.GetComponent<SpriteRenderer>();

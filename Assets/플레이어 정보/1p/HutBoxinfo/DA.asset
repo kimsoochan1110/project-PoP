@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DA
   m_EditorClassIdentifier: 
   frames:
-  - offset: {x: 6, y: 2}
-    size: {x: 30, y: 15}
+  - offset: {x: 6, y: -3}
+    size: {x: 30, y: 6}

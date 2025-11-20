@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: cogwhellHitboxData
   m_EditorClassIdentifier: 
   frames:
-  - damage: 0
+  - hitEffectPrefab: {fileID: 0}
+    hitEffectLifeTime: 0
     knockbackDirection: {x: 1, y: 0.5}
-    knockbackPower: 300
-    stunTime: 1
+    knockbackPower: 500
+    stunTime: 0.5
     offset: {x: 0, y: 0}
     size: {x: 4, y: 4}
     hitStopTime: 0.1
